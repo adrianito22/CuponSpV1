@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tiburela.appwalletiberia">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--Permission for camera-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!--Permission to vibrate-->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/iberlogo_icono"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/iberlogo_icono"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Design.Light.NoActionBar">
+        <activity
+            android:name=".ui.ActivRecuperaPasword"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityLogin"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".LoginAffterVerification"
+            android:exported="false" />
+        <activity
+            android:name=".RegistroActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ActivityDataBase"
+            android:exported="true" />
+        <activity
+            android:name=".PhoneAuthActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".MainActivity2"
+            android:exported="true" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".control_intro_e_inidcaciones.IntroSlider"
+            android:exported="true" />
+
+        <activity
+            android:name=".MainActivityCenter"
+            android:exported="true">
+
+        </activity>
+
+        <activity
+            android:name=".control_intro_e_inidcaciones.SplashScreen"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+
+    </application>
+
+</manifest>

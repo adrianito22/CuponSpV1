@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "857372510823",
+    "project_id": "monedero-app-capsule",
+    "storage_bucket": "monedero-app-capsule.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:857372510823:android:d06114fed7f5b5868e62c2",
+        "android_client_info": {
+          "package_name": "com.tiburela.appwalletiberia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "857372510823-r99sq8cgf50pu3jjdee2orgttge11o4e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfnzhbVrzOWNVzBVF3ZZL49HkhduzFA7I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "857372510823-r99sq8cgf50pu3jjdee2orgttge11o4e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

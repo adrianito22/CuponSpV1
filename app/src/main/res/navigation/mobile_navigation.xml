@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.tiburela.appwalletiberia.ui.home.HomeFragment"
+        android:label="inicio"
+        tools:layout="@layout/home_fragment" />
+
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.tiburela.appwalletiberia.ui.transaccion.TransaccionFragment"
+        android:label="Wallet"
+        tools:layout="@layout/transaccion_layout" />
+
+
+    <fragment
+        android:id="@+id/lista_paises"
+        android:name="com.tiburela.appwalletiberia.ui.transaccionesListView.TransaccionesFragment"
+        android:label="Transacciones"
+        tools:layout="@layout/lista_partidas_creadas" />
+
+
+    <fragment
+        android:id="@+id/favoritos_paises"
+        android:name="com.tiburela.appwalletiberia.ui.Tarjetas.Tarjetas"
+        android:label="Configuraciones"
+        tools:layout="@layout/fragment_cards" />
+
+    <fragment
+        android:id="@+id/conf_acerca"
+        android:name="com.tiburela.appwalletiberia.ui.Configuraciones.Configuraciones_y_acerca"
+        android:label="Pago QR"
+        tools:layout="configuraciones_y_acerca" />
+
+
+    <fragment
+        android:id="@+id/puntuaapp"
+        android:name="com.tiburela.appwalletiberia.ui.Configuraciones.Configuraciones_y_acerca"
+        android:label="Pago QR"
+        tools:layout="configuraciones_y_acerca" />
+
+
+
+    <fragment
+        android:id="@+id/configuraciones"
+        android:name="com.tiburela.appwalletiberia.ui.Configuraciones.Configuraciones_y_acerca"
+        android:label="Pago QR"
+        tools:layout="configuraciones_y_acerca" />
+
+    <fragment
+        android:id="@+id/licencias"
+        android:name="com.tiburela.appwalletiberia.ui.Configuraciones.Configuraciones_y_acerca"
+        android:label="Pago QR"
+        tools:layout="configuraciones_y_acerca" />
+
+    <fragment
+        android:id="@+id/politicas"
+        android:name="com.tiburela.appwalletiberia.ui.Configuraciones.Configuraciones_y_acerca"
+        android:label="Pago QR"
+        tools:layout="configuraciones_y_acerca" />
+
+
+    <fragment
+        android:id="@+id/atribuciones"
+        android:name="com.tiburela.appwalletiberia.ui.Configuraciones.Configuraciones_y_acerca"
+        android:label="Pago QR"
+        tools:layout="configuraciones_y_acerca" />
+
+
+    <fragment
+        android:id="@+id/acerca"
+        android:name="com.tiburela.appwalletiberia.ui.Configuraciones.Configuraciones_y_acerca"
+        android:label="Pago QR"
+        tools:layout="configuraciones_y_acerca" />
+
+</navigation>
