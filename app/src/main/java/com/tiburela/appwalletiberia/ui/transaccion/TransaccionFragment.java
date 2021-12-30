@@ -1,6 +1,8 @@
 package com.tiburela.appwalletiberia.ui.transaccion;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,16 +22,23 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tiburela.appwalletiberia.ActivityLogin;
 import com.tiburela.appwalletiberia.DataFirerbase.Variables;
 import com.tiburela.appwalletiberia.R;
 import com.tiburela.appwalletiberia.UsuarioCliente;
 import com.tiburela.appwalletiberia.ui.home.DialogSendUsd;
 import com.tiburela.appwalletiberia.ui.home.MoneyTextWatcher;
 
-import java.util.ArrayList;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 
 public class TransaccionFragment extends Fragment {
+
+    Handler handler;
+    Runnable r;
+
+
 
    TextView correoAquiEdi;
 
@@ -152,6 +161,12 @@ public class TransaccionFragment extends Fragment {
               Variables.totalCuentaQueEnvia=post.saldoActual;
 
                 muestraSladoActual();
+
+                if(post.estaBloqueado){
+                    Intent intencion= new Intent( getActivity(), ActivityLogin.class);
+                    startActivity(intencion);
+
+                }
 
                 // String dfdf= post.nombre;
             }
@@ -363,10 +378,11 @@ private void  actualizaUsuarios(double saldoReceptor,double saldoEmisor ){
 
        TextView textSaldoAqui=vista.findViewById(R.id.textSaldoAqui);
         //muestra el saldo actual redondeado
-        double valorredondeado=Math.round(Variables.totalCuentaQueEnvia * 100.0) / 100.0;
-        textSaldoAqui.setText(String.valueOf(valorredondeado));
+       // double valorredondeado=Math.round(Variables.totalCuentaQueEnvia * 100.0) / 100.0;
+        //textSaldoAqui.setText(String.valueOf(valorredondeado));
 
-
+        String cantidad= NumberFormat.getCurrencyInstance(Locale.US).format(Variables.totalCuentaQueEnvia);
+        textSaldoAqui.setText(String.valueOf(cantidad));
     }
 
 
@@ -381,7 +397,7 @@ private void  actualizaUsuarios(double saldoReceptor,double saldoEmisor ){
 
         ediTnombreAqui.setText(nombreYapellido);
 
-        Variables. nombreyApelelidoEmisor= nombreYapellido;
+        Variables.nombreyApellidoReceptor = nombreYapellido;
 
 
     }

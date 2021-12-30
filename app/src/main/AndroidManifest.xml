@@ -52,6 +52,10 @@
             android:exported="true" />
 
         <activity
+            android:name=".MyBaseActivity"
+            android:exported="true" />
+
+        <activity
             android:name=".MainActivityCenter"
             android:exported="true">
 

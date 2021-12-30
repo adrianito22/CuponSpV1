@@ -3,4 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+    <item
+        android:id="@+id/atribuciones"
+        android:icon="@drawable/ic_baseline_support_agent_24"
+        android:title="Acerca" />
+
+
+    <item
+        android:id="@+id/politicas"
+        android:icon="@drawable/ic_baseline_text_snippet_24"
+        android:title="Dudas y Soporte" />
+
 </menu>

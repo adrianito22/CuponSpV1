@@ -21,7 +21,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 
 import com.google.firebase.database.DataSnapshot;
@@ -79,7 +82,7 @@ public class DialogSendUsd extends DialogFragment {
     double totalCuentaReceptor = 0;
     private View rootView;
     LinearLayout linear_layout_01;
-
+    ConstraintLayout layout;
 
     @NonNull
     @Override
@@ -93,6 +96,8 @@ public class DialogSendUsd extends DialogFragment {
 
 
     }
+
+
 
     @Nullable
     @Override
@@ -119,7 +124,7 @@ public class DialogSendUsd extends DialogFragment {
         mDatabase = FirebaseDatabase.getInstance().getReference("Data Users");
 
 
-        String fraseyvalor = "vas enviar " + Variables.transaccionvalorString + " dolares" + " a " + Variables.nombreyApelelidoEmisor;
+        String fraseyvalor = "Vas a enviar " + Variables.transaccionvalorString + " $ " + " a " + Variables.nombreyApellidoReceptor;
 
 
         ediDestinatarioNombre.setText(fraseyvalor);
@@ -132,6 +137,8 @@ public class DialogSendUsd extends DialogFragment {
 
 
     private void findViewsByIds() {
+
+        layout= rootView.findViewById(R.id.constraintLayout);
         linear_layout_01 = rootView.findViewById(R.id.linear_layout_01);
         ediDestinatarioNombre = rootView.findViewById(R.id.ediDestinatarioNombre);
         ;
@@ -146,6 +153,8 @@ public class DialogSendUsd extends DialogFragment {
         okbtn = rootView.findViewById(R.id.okbtn);
 
     }
+
+
 
 
     @Override
@@ -201,7 +210,6 @@ public class DialogSendUsd extends DialogFragment {
 
     private void evento_botones() {
 
-
         btnSi.setOnClickListener(new View.OnClickListener() { //hacemos la transaccion
             @Override
             public void onClick(View view) {
@@ -212,17 +220,65 @@ public class DialogSendUsd extends DialogFragment {
 
                 if (Variables.pathReceptor.equals(Variables.pathEmisor)) {
 
-                    Toast.makeText(getActivity(), "no puedes tranferir a la misma cuenta", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "no puedes tranferir a tu propia cuenta", Toast.LENGTH_SHORT).show();
 
-
+Log.i("sfsdfsdfzza","se jecuto este if code989");
                     dismiss();
                     return;
+                }
 
+
+
+                if(!MirasitienesaldoSuficiente())  {
+
+                    FrameLayout fl = (FrameLayout) rootView.findViewById(R.id.nav_host_fragment); //eliminamos la vista
+
+
+                    if(fl != null) {
+                        fl.removeAllViews();
+                    }
+
+                    dismiss();
+
+
+
+                    return;
 
                 }
 
 
+
+
+                FrameLayout fl = (FrameLayout) rootView.findViewById(R.id.nav_host_fragment); //eliminamos la vista
+                if(fl!= null) {
+                    fl.removeAllViews();
+
+                }
+
+
+                FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
+                Fragment currentFragment = (Fragment)fragmentManager.findFragmentById(R.id.nav_host_fragment);
+                if(currentFragment instanceof HomeFragment){
+
+                    Log.i("ggdgd","fragment xiste");
+
+                  //  Toast.makeText(getActivity(), "fragment existe", Toast.LENGTH_SHORT).show();
+                    //SearchFragment exists in backstack , process accordingly
+                }
+
+                else{
+
+                    Log.i("ggdgd","fragment no xiste");
+
+                    //SearchFragment not present in backstack
+                }
+
+
+
+
+
                 //aqui hacemos el calcuklo
+
 
                 Variables.totalDespuesSendDestinatario_receptor = Variables.totalCuentaReceptor + Variables.montoAtransferirse;
 
@@ -232,7 +288,12 @@ public class DialogSendUsd extends DialogFragment {
 
                 actualizaUsuarios(Variables.totalDespuesSendDestinatario_receptor, Variables.totalDespuesSendDestinatario_emisor);
 
+
+
                 transaccionExitosa();
+
+
+
 
             }
 
@@ -242,26 +303,12 @@ public class DialogSendUsd extends DialogFragment {
              *
              * */
 
-         /*
-
-           if(!MirasitienesaldoSuficiente())  {
-
-               FrameLayout fl = (FrameLayout) rootView.findViewById(R.id.nav_host_fragment); //eliminamos la vista
-
-               if(fl != null) {
-                   fl.removeAllViews();
-               }
-
-               dismiss();
 
 
 
-               return;
-
-            }
 
 
-*/
+
 
 
             //    TransaccionFragment frtransaccion = new TransaccionFragment();
@@ -286,6 +333,9 @@ public class DialogSendUsd extends DialogFragment {
             @Override
             public void onClick(View v) {
 
+                Log.i("sfsdfsdfzza","se llamo ok boton");
+
+
                 habreFragment();
 
                 dismiss();
@@ -293,7 +343,7 @@ public class DialogSendUsd extends DialogFragment {
                 seanadioValues = false;
                 seanadioValues2 = false;
 
-                dismiss();
+              //  dismiss();
 
             }
         });
@@ -532,7 +582,14 @@ private void textocambia() {
         recuperadataunavezNodeReceptor();
 
 
-        linear_layout_01.setBackgroundResource(R.drawable.back_transaccion_exitosa);
+
+
+       // layout.setBackgroundResource(R.drawable.back_transaccion_exitosa);
+
+        //linear_layout_01.setBackgroundResource(R.drawable.back_transaccion_exitosa);
+
+
+
 
         ediDestinatarioNombre.setVisibility(View.GONE);
         TextView textView10 = rootView.findViewById(R.id.textView10);
@@ -548,6 +605,9 @@ private void textocambia() {
         btnSi.setVisibility(Button.GONE);
 
         imagernAqui.setVisibility(ImageView.VISIBLE);
+
+
+        Variables.transaccionexistosa=true;
 
     }
 
@@ -601,13 +661,18 @@ private void textocambia() {
 
 
     public void creaNodeEmisors(Map<String, Object> map2) {
-        /****
+
+
+        /***
          posiblemente mas adlenate  eliminemos un data base con unn solo objto  basta
-         */
+         ***/
 
         secreonodoEmisor = true;
 
-        String stringagregar = generandoDataToList("listaUser2", generfecha(), "Enviado", Variables.montoAtransferirse, Variables.nombreyApelelidoEmisor);
+        String stringagregar = generandoDataToList("listaUser2", generfecha(), "Enviado", Variables.montoAtransferirse, Variables.nombreyApellidoReceptor);
+
+        Log.i("somomasladataesdf","el nombre y appelido emisor es   "+Variables.nombreyApellidoReceptor);
+
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -619,6 +684,8 @@ private void textocambia() {
         mDatabase.child("transacciones").child(Variables.pathEmisor).setValue(map2); //creamos un nodo transaccion y le anadimos la info
 
 
+        Log.i("ayiudasomomasladataesdf","en crea node emi el path es   "+Variables.nombreyApellidoReceptor);
+
     }
 
     public void creaNodeRcpetorx(Map<String, Object> map2) {
@@ -626,7 +693,14 @@ private void textocambia() {
          posiblemente mas adlenate  eliminemos un data base con unn solo objto  basta
          */
         secreonodoReceptor = true;
-        String stringagregar = generandoDataToList("listaUser2", generfecha(), "Recibido", Variables.montoAtransferirse, Variables.nombreyApelelidoEmisor);
+        String stringagregar = generandoDataToList("listaUser2", generfecha(), "Recibido", Variables.montoAtransferirse, Variables.nombreyApellidoEmisor);
+
+
+        Log.i("databbbxs","nombre y appelido emisor es   "+Variables.nombreyApellidoEmisor);
+
+
+      //  Log.i("somomasladataesdf","el nombre y appelido repector es   "+Variables.nombreyApellidoReceptor);
+
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -636,6 +710,10 @@ private void textocambia() {
 
         mDatabase.child("transacciones").child(Variables.pathReceptor).setValue(map2); //creamos un nodo transaccion y le anadimos la info
 
+
+        Log.i("somomasladataesdf","en crea node rec el path es   "+Variables.pathReceptor);
+
+        Log.i("ayiudasomomasladataesdf","en crea node emi el path es   "+Variables.nombreyApellidoEmisor);
 
     }
 
@@ -664,20 +742,7 @@ private void textocambia() {
     }
 
 
-    private void anadeListaReceptorinNode() {
 
-
-        myRef2 = database.getReference("Data Users/transacciones"); //referencia al nodo o path donde vamos a escribir...
-
-
-        String stringagregar = generandoDataToList("listaUser2", generfecha(), "Recibido", Variables.montoAtransferirse, Variables.nombreyApelelidoEmisor);
-
-        Variables.listaDescrgadaRecetor.add(stringagregar);
-
-        myRef2.child(Variables.pathReceptor).setValue(Variables.listaDescrgadaRecetor);
-
-
-    }
 
 
     private void iniciaBaseData() {
@@ -911,7 +976,7 @@ private void textocambia() {
 
 
     private void anadenuevoVaLUE(){
-        String stringagregar=generandoDataToList("listaUser2",generfecha(),"Enviado",Variables.montoAtransferirse,Variables.nombreyApelelidoEmisor);
+        String stringagregar=generandoDataToList("listaUser2",generfecha(),"Enviado",Variables.montoAtransferirse,Variables.nombreyApellidoReceptor);
         DatabaseReference  mDatabase2 = FirebaseDatabase.getInstance().getReference();
 
        // Log.i("pathdebuge","el path recpetor es "+ pathEmisor);
@@ -927,22 +992,20 @@ private void textocambia() {
 
     }
 
+
+
+
+
     private void anadenuevoVaLUERecpetor(){
 
-        String stringagregar=generandoDataToList("listaUser2",generfecha(),"Recibido",Variables.montoAtransferirse,Variables.nombreyApelelidoEmisor);
+        String stringagregar=generandoDataToList("listaUser2",generfecha(),"Recibido",Variables.montoAtransferirse,Variables.nombreyApellidoEmisor);
         DatabaseReference  mDatabase2 = FirebaseDatabase.getInstance().getReference();
-
         // Log.i("pathdebuge","el path recpetor es "+ pathEmisor);
         DatabaseReference userReference = mDatabase2.child("transacciones/"+Variables.pathReceptor);
-
         String key = userReference.push().getKey();
-
         Map<String, Object> map2 = new HashMap<>();
-
         map2.put(key, stringagregar);
-
         userReference.updateChildren(map2);
-
 
     }
 

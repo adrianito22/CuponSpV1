@@ -15,8 +15,8 @@
 
         <LinearLayout
             android:id="@+id/linear_layout_01"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="7dp"
             android:background="@drawable/ventana_background"
             android:orientation="vertical"
@@ -29,18 +29,15 @@
             <TextView
                 android:id="@+id/ediDestinatarioNombre"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginTop="25dp"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_horizontal"
-                android:inputType="textPersonName"
-                android:text="GHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH  HG"
+                android:text="Seguro deseas realizar esta transacción ?"
                 android:textColor="#686868"
-                android:textColorHint="#AEADAD"
                 android:textSize="17sp" />
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -101,7 +98,7 @@
                 <TextView
                     android:id="@+id/btnSi"
                     android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="15dp"
                     android:layout_weight="1"
                     android:fontFamily="sans-serif-black"

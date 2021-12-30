@@ -11,6 +11,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
@@ -35,18 +36,17 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.Locale;
 import java.util.Objects;
 
-public class MainActivityCenter extends AppCompatActivity {
+public class MainActivityCenter extends MyBaseActivity {
+    Handler handler;
+    Runnable r;
     private AppBarConfiguration mAppBarConfiguration;
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         configura_idioma();
-
 
         setContentView(R.layout.mainactivityult);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -88,11 +88,40 @@ public class MainActivityCenter extends AppCompatActivity {
 
 
 
+        handler = new Handler();
+        r = new Runnable() {
+
+            @Override
+            public void run() {
+
+                Toast.makeText(MainActivityCenter.this, "user inactvo ",Toast.LENGTH_SHORT).show();
+
+                Intent intencion= new Intent(MainActivityCenter.this, ActivityLogin.class);
+                startActivity(intencion);
+
+                // TODO Auto-generated method stub
+            }
+        };
+        startHandler();
+
+    }
+    @Override
+    public void onUserInteraction() {
+        // TODO Auto-generated method stub
+        super.onUserInteraction();
+        stopHandler();//stop first and then start
+        startHandler();
+    }
+    public void stopHandler() {
+        handler.removeCallbacks(r);
+    }
 
 
+    public void startHandler() {
+        handler.postDelayed(r, 2*60*1000); //for 2 minutes
 
-}
 
+    }
 
 
 //activa si queremos el menu...

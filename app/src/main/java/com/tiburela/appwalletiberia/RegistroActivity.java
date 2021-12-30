@@ -211,7 +211,7 @@ if(!validaseguridaContrasena(contrasena_string)) { //mas validaciones extra d co
 
                              // String idUser, String nombre, String apellido, String correoElectronico,int saldoActual,int transaccionValor,String fechaTransaccion){
 
-                                writeNewUser(correo.getText().toString(),user.getUid(),ediNomnre.getText().toString(),ediApellido.getText().toString(),100.00,0,"vacio",false);
+                                writeNewUser(correo.getText().toString(),user.getUid(),ediNomnre.getText().toString(),ediApellido.getText().toString(),0.00,0,"vacio",false,false);
 
                             //  abrefragment();
 
@@ -536,9 +536,9 @@ private void PasaconfirmacionTelf(){
 
 
 
-    public void  writeNewUser(String correoElectronico,String idUser, String nombre, String apellido ,double saldoActual,int transaccionValor,String fechaTransaccion,boolean numeroVerificado){
+    public void  writeNewUser(String correoElectronico,String idUser, String nombre, String apellido ,double saldoActual,int transaccionValor,String fechaTransaccion,boolean numeroVerificado,boolean establoqueado){
 
-        UsuarioCliente usuarioClienteoBJ = new UsuarioCliente(correoElectronico,idUser,nombre,apellido,saldoActual,transaccionValor,fechaTransaccion,numeroVerificado);
+        UsuarioCliente usuarioClienteoBJ = new UsuarioCliente(correoElectronico,idUser,nombre,apellido,saldoActual,transaccionValor,fechaTransaccion,numeroVerificado,establoqueado);
 
         myRef.child("users").child(correoformatedo(correoElectronico)).setValue(usuarioClienteoBJ);
 

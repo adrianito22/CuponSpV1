@@ -7,7 +7,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -41,6 +43,8 @@ public class TransaccionesFragment extends Fragment {
     int id =0;
     int indice0=0;
 
+    TextView textonadaporaqui;
+
     ArrayList<String> listadata;
  private final String separador="+";
 
@@ -63,6 +67,9 @@ public class TransaccionesFragment extends Fragment {
 
 
         recyclerPersonajes = root.findViewById(R.id.RecyclerId);
+
+        textonadaporaqui = root.findViewById(R.id.textonadaporaqui);
+
         inicilizalistas();
 
         obtenUusariosList();
@@ -91,11 +98,13 @@ public class TransaccionesFragment extends Fragment {
          * parecq q una no es necesaria
          * */
 
-
-
         DatabaseReference  mDatabase2 = FirebaseDatabase.getInstance().getReference();
 
         DatabaseReference userReference = mDatabase2.child("transacciones/"+Variables.mailFormtToFrtransacc);
+
+
+        Log.i("somomasladataesdf","el path consultado es  "+Variables.mailFormtToFrtransacc);
+
 
 //        Log.i("vlaoreshaffy",Variables.pathEmisor);
 
@@ -107,36 +116,53 @@ public class TransaccionesFragment extends Fragment {
                 GenericTypeIndicator<HashMap<String, String>> objectsGTypeInd = new GenericTypeIndicator<HashMap<String, String>>() {};
                 Map<String, String> objectHashMap = dataSnapshot.getValue(objectsGTypeInd);
 
-                ArrayList<String> objectArrayList = new ArrayList<String>(objectHashMap.values());
 
-                Log.i("TAGgffg","el size es "+objectArrayList.size());   //gives the value for given keyname
+                 if(objectHashMap==null || objectHashMap.size()==0 ) {
+                                Log.i("ladataesdf","el size  es nulo y es igual a  0");
 
-
-                Log.i("TAGgffg","elvalue de exte indice es "+objectArrayList.get(0));   //gives the value for given keyname
-
-
-                for (int indice =0; indice < objectArrayList.size(); indice++) {
-
-                    String wordStr = objectArrayList.get(indice);
-
-                    Log.i("contadorbucle","se ejecuto este bucle");
-
-                    Log.i("zzzzxfdsd","la data es "+wordStr);
+                     textonadaporaqui.setVisibility(TextView.VISIBLE);
 
 
-                    if (wordStr.contains(",")) {
 
-                        String[] one = wordStr.split(Pattern.quote(","));
-                        //    public ItemHomeModel(String id_value, String fecha, String enviaorecibe, double transaccionValor, String nombreRecibe, String nombreEnvia) {
-
-                        lista_lecciones_items.add(new ItemHomeModel(one[0], one[1], one[2], Double.parseDouble(one[3]), one[4],one[4]));
-
-                    }
-
-                    contruirRecicler();
+                 }else{ //SI HAY DATA
+                     Log.i("ladataesdf","el size no es nulo y es mayor a 0");
 
 
-                }
+                     ArrayList<String> objectArrayList = new ArrayList<String>(objectHashMap.values());
+
+                     Log.i("TAGgffg","el size es "+objectArrayList.size());   //gives the value for given keyname
+                     Log.i("TAGgffg","elvalue de exte indice es "+objectArrayList.get(0));   //gives the value for given keyname
+
+                     for (int indice =0; indice < objectArrayList.size(); indice++) {
+
+                         String wordStr = objectArrayList.get(indice);
+
+                         Log.i("contadorbucle","se ejecuto este bucle");
+
+                         Log.i("zzzzxfdsd","la data es "+wordStr);
+
+
+                         if (wordStr.contains(",")) {
+
+                             String[] one = wordStr.split(Pattern.quote(","));
+                             //    public ItemHomeModel(String id_value, String fecha, String enviaorecibe, double transaccionValor, String nombreRecibe, String nombreEnvia) {
+
+                             lista_lecciones_items.add(new ItemHomeModel(one[0], one[1], one[2], Double.parseDouble(one[3]), one[4],one[4]));
+
+                         }
+
+                         contruirRecicler();
+
+
+                     }
+
+
+                 }
+
+
+
+
+
 
 
               /*

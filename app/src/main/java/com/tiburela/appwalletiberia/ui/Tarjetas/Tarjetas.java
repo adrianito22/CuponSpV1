@@ -11,8 +11,8 @@ import com.tiburela.appwalletiberia.R;
 
 
 public class Tarjetas extends Fragment {
-int continente_selecionado=0;
 
+int continente_selecionado=0;
 
     public Tarjetas() {
         // Required empty public constructor

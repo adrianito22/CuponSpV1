@@ -4,6 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Variables {
+
+  public static boolean transaccionexistosa;
+
+    public static String nombreyApellidoEmisor;
+
+    public static String nombreyApellidoReceptor;
+
+
+
+
     public static List<String> listaEmisor;
     public static List<String> listaRecetor;
 
@@ -26,7 +36,6 @@ public static int contadorNode;
   public static  String transaccionvalorString;
 
 
-    public static String nombreyApelelidoEmisor;
 
 
     public static   String correoThisUserand_Emisor;     //correo del remitnete y usuaurioo actual

@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/conf_acerca"
         android:name="com.tiburela.appwalletiberia.ui.Configuraciones.Configuraciones_y_acerca"
-        android:label="Pago QR"
+        android:label="Mi Perfil"
         tools:layout="configuraciones_y_acerca" />
 
 
@@ -61,22 +61,24 @@
 
     <fragment
         android:id="@+id/politicas"
-        android:name="com.tiburela.appwalletiberia.ui.Configuraciones.Configuraciones_y_acerca"
+        android:name="com.tiburela.appwalletiberia.fragment.SporteYdudas"
         android:label="Pago QR"
-        tools:layout="configuraciones_y_acerca" />
+        tools:layout="fragment_acerca" />
 
 
     <fragment
         android:id="@+id/atribuciones"
-        android:name="com.tiburela.appwalletiberia.ui.Configuraciones.Configuraciones_y_acerca"
+        android:name="com.tiburela.appwalletiberia.fragment.Acerca"
         android:label="Pago QR"
-        tools:layout="configuraciones_y_acerca" />
+        tools:layout="fragment_sporte_ydudas" />
 
 
     <fragment
         android:id="@+id/acerca"
         android:name="com.tiburela.appwalletiberia.ui.Configuraciones.Configuraciones_y_acerca"
         android:label="Pago QR"
-        tools:layout="configuraciones_y_acerca" />
+        tools:layout="fragment_sporte_ydudas" />
+
+
 
 </navigation>

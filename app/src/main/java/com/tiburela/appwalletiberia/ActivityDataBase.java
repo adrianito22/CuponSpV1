@@ -35,7 +35,7 @@ public class ActivityDataBase extends AppCompatActivity {
      //   public void  writeNewUser(String idUser, String nombre, String apellido, String correoElectronico,int saldoActual,int transaccionValor,String fechaTransaccion){
 
 
-        writeNewUser("usuario Id","Adriano","Vicente","adrianovicente@gmail.com",100,10,"11 de diciembre del 2021",false);
+        writeNewUser("usuario Id","Adriano","Vicente","adrianovicente@gmail.com",100,10,"11 de diciembre del 2021",false,false);
 
         actualizaSaldoUser();
 
@@ -77,9 +77,9 @@ private void listenerDtabase() { //
 
 
 
-    public void  writeNewUser(String idUser, String nombre, String apellido, String correoElectronico,long saldoActual,int transaccionValor,String fechaTransaccion,boolean numeroVerificado){
+    public void  writeNewUser(String idUser, String nombre, String apellido, String correoElectronico,long saldoActual,int transaccionValor,String fechaTransaccion,boolean numeroVerificado,boolean establoqueado){
 
-            UsuarioCliente usuarioClienteoBJ = new UsuarioCliente(idUser,nombre,apellido,correoElectronico,saldoActual,transaccionValor,fechaTransaccion,numeroVerificado);
+            UsuarioCliente usuarioClienteoBJ = new UsuarioCliente(idUser,nombre,apellido,correoElectronico,saldoActual,transaccionValor,fechaTransaccion,numeroVerificado,establoqueado);
 
         myRef.child("users").child(idUser).setValue(usuarioClienteoBJ);
 

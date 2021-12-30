@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable-v24/a_shape_btcolorselect4.xml" value="0.15625" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable-v24/descativado_btn.xml" value="0.15625" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable-v24/ic_baseline_qr_code_24xc.xml" value="0.18518518518518517" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable-v24/ic_baseline_support_agent_24.xml" value="0.18518518518518517" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable/a_shape_btcolorselect4.xml" value="0.15625" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable/activado_btn.xml" value="0.15625" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable/back_transaccion_exitosa.xml" value="0.14453125" />
@@ -13,8 +15,11 @@
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable/checkimg.xml" value="0.15625" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable/descativado_btn.xml" value="0.14296875" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable/enviado_icon.xml" value="0.14871794871794872" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable/ic_baseline_arrow_forward_24xx.xml" value="0.18518518518518517" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable/ic_baseline_support_agent_24.xml" value="0.18518518518518517" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable/ic_baseline_visibility_24.xml" value="0.17094017094017094" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable/ic_baseline_visibility_off_24a.xml" value="0.1" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable/recibido_icon.xml" value="0.18518518518518517" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable/transaprente.xml" value="0.17094017094017094" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable/ventana_background.xml" value="0.14296875" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/activity_activ_recupera_pasword.xml" value="0.153125" />
@@ -29,6 +34,7 @@
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/activity_transferir_saldo.xml" value="0.153125" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/app_bar_main.xml" value="0.40185185185185185" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/content_main.xml" value="0.15" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_acerca.xml" value="0.12" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_blank.xml" value="0.2" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_cards.xml" value="0.153125" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_fragmet_camara.xml" value="0.17" />
@@ -36,15 +42,16 @@
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_qr_camera.xml" value="0.17" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_recuperar_contrasena.xml" value="0.25" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_registro.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_sporte_ydudas.xml" value="0.1" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_transaccion.xml" value="0.14" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_verificacion_telef.xml" value="0.1390625" />
-        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/home_fragment.xml" value="0.33" />
-        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/iem_list_lecciones_creadas.xml" value="0.2" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/home_fragment.xml" value="0.25338753387533874" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/iem_list_lecciones_creadas.xml" value="0.33" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/intro_one.xml" value="0.132421875" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/intro_three.xml" value="0.14" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/intro_two.xml" value="0.1078125" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/layoutxz.xml" value="0.16" />
-        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/lista_partidas_creadas.xml" value="0.153125" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/lista_partidas_creadas.xml" value="0.33" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/mainactivityult.xml" value="0.25" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/nav_header_main.xml" value="0.22" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/next_introslider.xml" value="0.132421875" />
@@ -52,7 +59,8 @@
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/qr_layout.xml" value="0.132421875" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/registrarse.xml" value="0.2303370786516854" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/transaccion_layout.xml" value="0.25" />
-        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/venatanagame2.xml" value="0.33" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/venatanagame2.xml" value="0.25" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/venatanagame3.xml" value="0.22" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/vista_indicaciones3.xml" value="0.132421875" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/menu/activity_main_drawer.xml" value="0.25" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/menu/main.xml" value="0.12638888888888888" />
@@ -61,7 +69,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

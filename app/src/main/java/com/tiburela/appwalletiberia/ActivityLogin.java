@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -18,14 +20,28 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.tiburela.appwalletiberia.DataFirerbase.Variables;
 import com.tiburela.appwalletiberia.ui.ActivRecuperaPasword;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ActivityLogin extends AppCompatActivity {
     EditText useredit;
     EditText paswordedit;
     TextView recuperaTextview;
    Button ocultaYmuestrbtn;
+    boolean existeUser=false;
+
+    boolean estaBloqueado=false;
+
+    DatabaseReference mDatabase2 ;
+    DatabaseReference userReference;
 
     boolean estamostrandoPasword=false;
     Button btn_inicia;
@@ -60,6 +76,11 @@ public class ActivityLogin extends AppCompatActivity {
 
 
         eventos();
+
+
+
+       mDatabase2 = FirebaseDatabase.getInstance().getReference(); //desctivar este
+       userReference = mDatabase2.child("Data Users").child("users");
 
 
 
@@ -159,11 +180,9 @@ public class ActivityLogin extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(!validacampos()){
-
                     return;
-
-                };
-
+                }
+                checkUserExisteNodeReceptor();
 
 
                 mAuth.signInWithEmailAndPassword(useredit.getText().toString(), paswordedit.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -176,7 +195,25 @@ public class ActivityLogin extends AppCompatActivity {
 
                             Variables.mailFormtToFrtransacc= correoformatedo(Variables.correoThisUserand_Emisor);
 
-                                vamosActivity();
+                             //  checkUserExisteNodeReceptor();
+
+                            if(checkUserExisteNodeReceptor()){
+
+                                thisUserIsBlock(Variables.mailFormtToFrtransacc);
+
+                              //  vamosActivity();
+
+                            }
+
+
+                            else
+                                {
+
+                                Toast.makeText(ActivityLogin.this, "no exite una cuenta con este correo", Toast.LENGTH_SHORT).show();
+
+
+                            }
+
 
                             } else {
 
@@ -185,8 +222,24 @@ public class ActivityLogin extends AppCompatActivity {
                             }
 
                         }else {
-                            Toast.makeText(ActivityLogin.this, "ocurrio un error", Toast.LENGTH_SHORT).show();
+
+
+
+                            if(checkUserExisteNodeReceptor()&& mAuth.getCurrentUser().isEmailVerified()){
+
+
+                                Toast.makeText(ActivityLogin.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+
+
+                            }else {
+
+                                Toast.makeText(ActivityLogin.this, "No hay una cuenta con este correo", Toast.LENGTH_SHORT).show();
+
                             }
+
+
+
+                        }
 
 
                     }
@@ -277,6 +330,8 @@ public class ActivityLogin extends AppCompatActivity {
     }
 
 
+
+
     private String correoformatedo(String correoAqui) {
         String terminado=correoAqui.replaceAll("@", "0101010101010101");
         String String2terminado=terminado.replaceAll("\\.", "0101010101010");
@@ -285,7 +340,174 @@ public class ActivityLogin extends AppCompatActivity {
     }
 
 
+    public boolean checkUserExisteNodeReceptor(){
+
+       // DatabaseReference mDatabase2 = FirebaseDatabase.getInstance().getReference(); //desctivar este
+       // DatabaseReference userReference = mDatabase2.child("Data Users").child("users");
+        userReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
 
+
+                if ((dataSnapshot.hasChild(correoformatedo(useredit.getText().toString())))) { //si existe este nodo el usairo esta registrado..
+
+                    //tu cuenta si existe........
+
+                    existeUser=true;
+
+                }
+                else
+                    { //si no existe..le anadimos la data a esta lista
+
+                    existeUser=false;
+
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // ...
+            }
+        });
+
+
+  return existeUser;
+    }
+
+
+    /*
+    public void thisUserIsBlock(String path) {
+        DatabaseReference mDatabase2 = FirebaseDatabase.getInstance().getReference(); //desctivar este
+        DatabaseReference userReference = mDatabase2.child("Data Users").child("users");
+        userReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if ((dataSnapshot.hasChild(path))) {
+
+                    Log.i("verficvanxx", "este path ahora es  " + path);
+                    Log.i("verficvanxx", "el valor de esta bloqueado es " +dataSnapshot.child(path).child("estaBloqueado").getValue());
+
+                    estaBloqueado= (boolean) dataSnapshot.child(path).child("estaBloqueado").getValue();
+
+                    Log.i("verficvanxadsfsdfx", "este path ahora es zxcxx  " + estaBloqueado);
+
+                    if( estaBloqueado) {
+                        Toast.makeText(ActivityLogin.this, "usuario  bloqueado Temporalmente", Toast.LENGTH_SHORT).show();
+                        //esta bloqueado
+                        btnlogin.setText("Usuario bloqueado")  ;
+                        btnlogin.setTextColor(Color.parseColor("#5a5a5a"));
+                        btnlogin.setEnabled(false);
+
+                        btnRegistrarte.setTextColor(Color.parseColor("#5a5a5a"));
+                        btnRegistrarte.setEnabled(false);
+
+                    }
+                    else { //no esta bloqueado
+                        vamosActivity();
+                    }
+
+
+                } else { //si no existe..le anadimos la data a esta lista
+
+                }
+
+
+
+
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                // ...
+            }
+        });
+
+    }
+    */
+
+
+    private void thisUserIsBlock(String path) {
+        DatabaseReference mDatabase2 = FirebaseDatabase.getInstance().getReference(); //desctivar este
+        DatabaseReference userReference = mDatabase2.child("Data Users").child("users");
+        ValueEventListener postListener = new ValueEventListener() {
+
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if ((dataSnapshot.hasChild(path))) {
+
+                    Log.i("verficvanxx", "este path ahora es  " + path);
+                    Log.i("verficvanxx", "el valor de esta bloqueado es " +dataSnapshot.child(path).child("estaBloqueado").getValue());
+
+
+                    String nombre= (String) dataSnapshot.child(path).child("nombre").getValue();
+                    String apellido= (String) dataSnapshot.child(path).child("apellido").getValue();
+
+                    Variables.nombreyApellidoEmisor=nombre+" "+apellido;;
+
+
+                    estaBloqueado= (boolean) dataSnapshot.child(path).child("estaBloqueado").getValue();
+
+                    Log.i("verficvanxadsfsdfx", "este path ahora es zxcxx  " + estaBloqueado);
+
+                    if( estaBloqueado) {
+                        Toast.makeText(ActivityLogin.this, "usuario  bloqueado Temporalmente", Toast.LENGTH_SHORT).show();
+                        //esta bloqueado
+                        btnlogin.setText("Usuario bloqueado")  ;
+                      //  btnlogin.setTextColor(Color.parseColor("#5a5a5a"));
+                        btnlogin.setEnabled(false);
+
+                        btnRegistrarte.setTextColor(Color.parseColor("#5a5a5a"));
+                        btnRegistrarte.setEnabled(false);
+
+                    }
+
+                    else {
+                        btnlogin.setText("Iniciar sesion");
+                      //  btnlogin.setTextColor(Color.parseColor("#5a5a5a"));
+                        btnlogin.setEnabled(true);
+
+                      //  btnRegistrarte.setTextColor(Color.parseColor("#5a5a5a"));
+                        btnRegistrarte.setEnabled(true);
+                        //no esta bloqueado
+                        vamosActivity();
+
+                    }
+
+
+                } else { //si no existe..le anadimos la data a esta lista
+
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        };
+        userReference.addValueEventListener(postListener); //psoiblemnte lo eliminemos
+
+
+    }
+
+    public void onBackPressed() {
+
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+        startActivity(intent);
+        finish();
+        System.exit(0);
+
+        //  super.onBackPressed();
+       // moveTaskToBack(true);
+
+    }
 
 }

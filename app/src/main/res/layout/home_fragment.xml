@@ -27,13 +27,34 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="577dp" />
 
-        <Button
-            android:id="@+id/pagarqrCode2"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textSaldoActual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 0,00"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/pagarqrCode2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/transaprente"
-            android:text="Pagar con QR"
+            android:background="@drawable/ic_baseline_qr_code_24xc"
             android:textAllCaps="false"
             android:textColor="#FF9800"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -187,22 +208,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textSaldoActual"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="$ 0,00"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-        <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Enviar Dinero"
+            android:text="Transferir"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
@@ -257,7 +267,7 @@
             android:id="@+id/searchView"
             android:layout_width="311dp"
             android:layout_height="48dp"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="80dp"
             android:queryHint="Nombre o correo electronico"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.504"

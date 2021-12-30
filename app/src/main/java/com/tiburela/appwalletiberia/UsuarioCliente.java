@@ -9,13 +9,14 @@ public class UsuarioCliente {
     public  int transaccionValor;
     public  String fechaTransaccion;
     public boolean numeroVerificado;
+    public  boolean estaBloqueado;
 
 public UsuarioCliente(){
 
 
 }
 
-    public UsuarioCliente(String correoElectronico ,String idUser, String nombre, String apellido ,double saldoActual,int transaccionValor,String fechaTransaccion, boolean numeroVerificado){
+    public UsuarioCliente(String correoElectronico ,String idUser, String nombre, String apellido ,double saldoActual,int transaccionValor,String fechaTransaccion, boolean numeroVerificado,boolean estaBloqueado){
         this.idUser = idUser;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -24,6 +25,7 @@ public UsuarioCliente(){
         this.transaccionValor = transaccionValor;
         this.fechaTransaccion = fechaTransaccion;
        this. numeroVerificado=numeroVerificado;
+        this. estaBloqueado=estaBloqueado;
 
 
     }

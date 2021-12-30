@@ -37,9 +37,12 @@ import com.tiburela.appwalletiberia.DataFirerbase.Variables;
 import com.tiburela.appwalletiberia.FragmetCamara;
 import com.tiburela.appwalletiberia.R;
 import com.tiburela.appwalletiberia.UsuarioCliente;
+import com.tiburela.appwalletiberia.ui.Configuraciones.Dialogok;
 import com.tiburela.appwalletiberia.ui.transaccion.TransaccionFragment;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class HomeFragment extends Fragment implements View.OnClickListener , TextWatcher {
@@ -138,6 +141,27 @@ String correoActualToSend ="";
     @Override
     public void onResume() {
         super.onResume();
+
+
+        if(Variables.transaccionexistosa) {
+
+            Dialogok dialog = new Dialogok();
+            dialog.show(getActivity().getSupportFragmentManager(), "image_dialogx");
+
+            Variables.transaccionexistosa=false;
+
+
+        }
+
+
+
+
+
+
+        Log.i("taskdata","se ejecuto onresumne");
+
+
+
 
        mDatabase2 = FirebaseDatabase.getInstance().getReference();
 
@@ -386,7 +410,7 @@ String correoActualToSend ="";
 
             //    Toast.makeText(getActivity(),"tu posicion 1 es  : " + posicion,Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(getActivity(),"tu poscion 2 es : " + posicion2,Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getActivity(),"tu poscion 2 es : " + posicion2,Toast.LENGTH_SHORT).show();
 
                 //da valores a los nombres
 
@@ -408,7 +432,7 @@ String correoActualToSend ="";
 
                 }else{
 
-                    Toast.makeText(getActivity(), "debug no se puede enviar dolares", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "lo siento, no puedes hacer esta transaccion", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -457,7 +481,7 @@ String correoActualToSend ="";
 
                 //cuando el usuario p`resiona mostramos esta lista...
 
-                Toast.makeText(getActivity(), "a presionado este ",Toast.LENGTH_LONG).show();
+               // Toast.makeText(getActivity(), "a presionado este ",Toast.LENGTH_LONG).show();
 
 
 
@@ -467,7 +491,7 @@ String correoActualToSend ="";
                 if(list.contains(query)){
                     adapter.getFilter().filter(query);
                 }else{
-                    Toast.makeText(getActivity(), "No Match found",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "No encontrado",Toast.LENGTH_LONG).show();
                 }
                 return false;
             }
@@ -668,7 +692,7 @@ String correoActualToSend ="";
 
                 }else{
 
-                    Toast.makeText(getActivity(), "debug no se puede enviar dolares", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Lo sentimos no puedes realizar esta transaccion", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -696,6 +720,7 @@ private void dffd() {
 
 
     private void dataUsuarioEnvia(String userNodeEnvia){
+
         DatabaseReference collection = FirebaseDatabase.getInstance().getReference("Data Users/users/"+userNodeEnvia);
 
         ValueEventListener postListener = new ValueEventListener() {
@@ -725,12 +750,14 @@ private void dffd() {
 
     private void muestraSladoActual(){
 
-
         TextView textSaldoAqui=root.findViewById(R.id.textSaldoActual);
         //muestra el saldo actual redondeado
-        double valorredondeado=Math.round(totalCuentaQueEnvia * 100.0) / 100.0;
-        textSaldoAqui.setText(String.valueOf(valorredondeado));
+       // double valorredondeado=Math.round(totalCuentaQueEnvia * 100.0) / 100.0;
+        //textSaldoAqui.setText(String.valueOf(valorredondeado));
 
+        String cantidad= NumberFormat.getCurrencyInstance(Locale.US).format(totalCuentaQueEnvia);
+
+        textSaldoAqui.setText(cantidad);
 
     }
 
@@ -744,7 +771,6 @@ private void dffd() {
 
 
     }
-
 
 
 

@@ -1,6 +1,7 @@
 package com.tiburela.appwalletiberia.ui.transaccionesListView;
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tiburela.appwalletiberia.R;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class AdaptadorPersonajes
@@ -50,18 +53,21 @@ public class AdaptadorPersonajes
     @Override
     public void onBindViewHolder(ViewHolderPersonajes holder, int position) {
 
-
-        holder.etiNombre.setText(listaPersonajes.get(position).nombreRecibe);
-
         holder.enviaorecibe.setText(listaPersonajes.get(position).fecha);
-
 
 
        // holder.etiNombre.setText(listaPersonajes.get(position).fecha);
 
-        String cantidad="$ "+String.valueOf(listaPersonajes.get(position).transaccionValor);
+
+       // String cantidad="$ "+String.valueOf(listaPersonajes.get(position).transaccionValor);
+        String cantidad= NumberFormat.getCurrencyInstance(Locale.US).format(listaPersonajes.get(position).transaccionValor);
+
 
         if(listaPersonajes.get(position).enviaorecibe.equals("Recibido")) {
+
+            Log.i("zzxladataesdf","este es reicibido");
+
+            holder.etiNombre.setText(listaPersonajes.get(position).nombreRecibe);
             holder.imgvIconSendOrecibe.setImageResource(R.drawable.recibido_icon);
 
             holder.iconotext.setText("+");
@@ -69,12 +75,27 @@ public class AdaptadorPersonajes
             holder.txt_cantidad_aqui.setText(cantidad);
             holder.txt_cantidad_aqui.setTextColor(Color.parseColor("#018065"));
 
+            holder.iconotext.setTextColor(Color.parseColor("#018065"));
+
 
         }else{
 
-            holder.imgvIconSendOrecibe.setImageResource(R.drawable.enviado_icon);
+            Log.i("zzxladataesdf","este es enviado");
+
+
+            // holder.imgvIconSendOrecibe.setImageResource(R.drawable.enviado_icon);
+           // holder.txt_cantidad_aqui.setText(cantidad);
+           // holder.iconotext.setText("-");
+
+            holder.etiNombre.setText(listaPersonajes.get(position).nombreRecibe);
+
+            holder.imgvIconSendOrecibe.setImageResource(R.drawable.ic_baseline_arrow_forward_24xx);
             holder.txt_cantidad_aqui.setText(cantidad);
+            holder.txt_cantidad_aqui.setTextColor(Color.parseColor("#db0b0d"));
             holder.iconotext.setText("-");
+            holder.iconotext.setTextColor(Color.parseColor("#db0b0d"));
+            holder.iconotext.setTextColor(Color.parseColor("#db0b0d"));
+
 
         }
 
