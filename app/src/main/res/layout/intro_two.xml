@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-    <LinearLayout
-    android:orientation="vertical"
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:background="@color/white"
@@ -17,10 +17,11 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="258dp"
-            android:layout_height="450dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp" />
+            android:layout_marginTop="40dp"
+            app:srcCompat="@drawable/img003" />
 
     </LinearLayout>
 
@@ -35,11 +36,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="Una buena opcion en tu vida"
-        android:textColor="@android:color/black"
+        android:text="Aprovechamos la tecnología para facilitar procesos"
 
+        android:textColor="@android:color/black"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -50,7 +52,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="25dp"
         android:gravity="center"
-        android:text="Somo tus mejor opcion para solucionar cualquier apuro"
+        android:text="Puedes enviar y recibir pagos usando tu teléfono móvil "
         android:textColor="@android:color/black"
         android:textSize="18sp" />
 

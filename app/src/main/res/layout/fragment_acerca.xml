@@ -8,7 +8,10 @@
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="acerca" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="10dp"
+        android:text="Monedero electronico Iber app , es el producto obtenido en base a un proyecto realizado por el laboratoria de ciencia y tecnologia NOMBRE AQUI , dirigido por el tecnologo  Edwin Mocha. Nuestro objetivo es aportar positivamente a nuestra querida comunidad,creeemos firmemente que el desarrollo de un pueblo se consigue tambien haciendo buen uso de la tecnologia y de las inmensas posibilidades que esta nos provee." />
 
 </FrameLayout>

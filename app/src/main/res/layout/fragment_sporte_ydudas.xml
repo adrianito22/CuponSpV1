@@ -6,9 +6,27 @@
     tools:context=".fragment.SporteYdudas">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="soporte" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Si tienes dudas ,quieres aportar con una recomendacion o encontraste alguna defecto en la app , por favor ponte en contacto diractamente a traves de los siguientes medios
+: " />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="correoAqui" />
+    </LinearLayout>
 
 </FrameLayout>
