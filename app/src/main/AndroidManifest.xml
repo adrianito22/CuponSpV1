@@ -19,18 +19,26 @@
         android:theme="@style/Theme.Design.Light.NoActionBar">
         <activity
             android:name=".ui.ActivRecuperaPasword"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ActivityLogin"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:exported="true">
 
         </activity>
         <activity
             android:name=".LoginAffterVerification"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".RegistroActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ActivityDataBase"
             android:exported="true" />
@@ -49,6 +57,8 @@
 
         <activity
             android:name=".control_intro_e_inidcaciones.IntroSlider"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:exported="true" />
 
         <activity
@@ -57,6 +67,8 @@
 
         <activity
             android:name=".MainActivityCenter"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:exported="true">
 
         </activity>

@@ -1,5 +1,6 @@
 package com.tiburela.appwalletiberia;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -28,7 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.intellij.lang.annotations.Pattern;
 import org.intellij.lang.annotations.RegExp;
-
+@Keep
 public class RegistroActivity extends AppCompatActivity {
     EditText contrasena_Editxt;
     boolean estamostrandoPasword=false;
@@ -42,6 +43,8 @@ public class RegistroActivity extends AppCompatActivity {
     EditText correo;
     Button btnRegistrarse;
     String email="";
+
+    EditText numerotelfEdixtz;
 
     String pathUser="";
 
@@ -145,7 +148,7 @@ public class RegistroActivity extends AppCompatActivity {
         }
 
         if (contrasena_string.isEmpty()) {
-            contrasena_Editxt.setError("contrasena es requerida");
+            contrasena_Editxt.setError("Contraseña es requerida");
             contrasena_Editxt.requestFocus();
             return;
         }
@@ -154,7 +157,7 @@ public class RegistroActivity extends AppCompatActivity {
 
 
         if (contrasena_string.length() < 8) {
-            contrasena_Editxt .setError("el tamano minimo de contrasena es 8 acarctyeres");
+            contrasena_Editxt .setError("el tamaño minimo de contraseña es 8 caracteres");
             contrasena_Editxt .requestFocus();
             return;
         }
@@ -175,6 +178,17 @@ public class RegistroActivity extends AppCompatActivity {
             return;
         }
 
+
+
+
+/*
+        if (numerotelfEdixtz.getText().toString().length() < 9) {
+            numerotelfEdixtz .setError("inserte un numero valido");
+            numerotelfEdixtz .requestFocus();
+            return;
+        }
+
+        */
 
 
         esNumeros(contrasena_string);
@@ -203,7 +217,6 @@ if(!validaseguridaContrasena(contrasena_string)) { //mas validaciones extra d co
 
                     FirebaseUser user =FirebaseAuth.getInstance().getCurrentUser();
 
-
                     user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -216,7 +229,6 @@ if(!validaseguridaContrasena(contrasena_string)) { //mas validaciones extra d co
                             //  abrefragment();
 
                                 abreActivity();
-
 
 
                                 Toast.makeText(RegistroActivity.this, "Registro exitoso ,Revisa tu correo para verificar la cuenta ", Toast.LENGTH_SHORT).show();
@@ -273,6 +285,7 @@ if(!validaseguridaContrasena(contrasena_string)) { //mas validaciones extra d co
 
         ocultaYmuestrbtn=findViewById(R.id.ocultaYmuestrbtn2);
 
+        numerotelfEdixtz=findViewById(R.id.numerotelfEdixtz);
 
 
     }
@@ -280,10 +293,14 @@ if(!validaseguridaContrasena(contrasena_string)) { //mas validaciones extra d co
     private void eventoBtns() {
         btnRegistrarse.setOnClickListener(new View.OnClickListener() {
 
+
+
             @Override
             public void onClick(View v) {
 
-                obtieneTexto();
+                Log.i("sepulso","se puslo btn");
+
+                        obtieneTexto();
 
 
             }

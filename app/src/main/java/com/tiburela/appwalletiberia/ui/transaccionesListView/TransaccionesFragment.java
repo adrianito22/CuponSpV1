@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,14 +30,17 @@ import com.tiburela.appwalletiberia.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+@Keep
 
 public class TransaccionesFragment extends Fragment {
   View root;
+
     RecyclerView recyclerPersonajes;
     private AdaptadorPersonajes adapter;
     List<String> milista;
@@ -92,7 +96,11 @@ public class TransaccionesFragment extends Fragment {
 
     private void obtenUusariosList(){
 
+
         milista =new ArrayList<String>();
+
+
+        ArrayList <Integer> indicesEcontradosMenor= new ArrayList<Integer>();
 
         /**
          * parecq q una no es necesaria
@@ -108,7 +116,12 @@ public class TransaccionesFragment extends Fragment {
 
 //        Log.i("vlaoreshaffy",Variables.pathEmisor);
 
-        ValueEventListener postListener = new ValueEventListener() {
+         ValueEventListener postListener = new ValueEventListener()
+
+      //  userReference.orderByValue().limitToLast(10).addValueEventListener(new ValueEventListener()
+
+        {
+
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -118,17 +131,21 @@ public class TransaccionesFragment extends Fragment {
 
 
                  if(objectHashMap==null || objectHashMap.size()==0 ) {
-                                Log.i("ladataesdf","el size  es nulo y es igual a  0");
+                                Log.i("ASladataesdf","el size  es nulo O es igual a  0");
 
                      textonadaporaqui.setVisibility(TextView.VISIBLE);
 
 
 
                  }else{ //SI HAY DATA
+                     Log.i("ASladataesdf","el size no es nulo y es mayor a 0");
+
                      Log.i("ladataesdf","el size no es nulo y es mayor a 0");
 
 
+
                      ArrayList<String> objectArrayList = new ArrayList<String>(objectHashMap.values());
+
 
                      Log.i("TAGgffg","el size es "+objectArrayList.size());   //gives the value for given keyname
                      Log.i("TAGgffg","elvalue de exte indice es "+objectArrayList.get(0));   //gives the value for given keyname
@@ -142,24 +159,36 @@ public class TransaccionesFragment extends Fragment {
                          Log.i("zzzzxfdsd","la data es "+wordStr);
 
 
+
                          if (wordStr.contains(",")) {
 
                              String[] one = wordStr.split(Pattern.quote(","));
                              //    public ItemHomeModel(String id_value, String fecha, String enviaorecibe, double transaccionValor, String nombreRecibe, String nombreEnvia) {
 
-                             lista_lecciones_items.add(new ItemHomeModel(one[0], one[1], one[2], Double.parseDouble(one[3]), one[4],one[4]));
+                             String  doub=one [6];
+
+                             lista_lecciones_items.add(new ItemHomeModel(one[0], one[1], one[2], Double.parseDouble(one[3]), one[4],one[4],one[5],doub));
 
                          }
+                        // lista_lecciones_items.sort(Collections.reverseOrder());
+                        // Collections.sort(lista_lecciones_items);
+                        // Collections.reverse(lista_lecciones_items);
 
-                         contruirRecicler();
+
 
 
                      }
 
 
+                    Collections.sort(lista_lecciones_items);
+                     Collections.reverse(lista_lecciones_items);
+
+
+
+                     contruirRecicler();
+
+
                  }
-
-
 
 
 
@@ -191,7 +220,7 @@ public class TransaccionesFragment extends Fragment {
 
     private void contruirRecicler(){
 
-
+      //  Collections.sort(lista_lecciones_items);
 
 
         adapter = new AdaptadorPersonajes(lista_lecciones_items, getActivity());
@@ -288,10 +317,7 @@ public class TransaccionesFragment extends Fragment {
                     ItemHomeModel resultObj2 = item_snapshot.getValue(ItemHomeModel.class);
 
 
-
                     Log.d("item id",item_snapshot.child("id"+id).getValue().toString());
-
-
 
 
                     //  for(DataSnapshot item_snapshot:dataSnapshot.getChildren()) {
@@ -314,11 +340,15 @@ public class TransaccionesFragment extends Fragment {
                     String nombreEnvia= resultObj.nombreEnvia;
 
 
-                    listadata.add(id+separador+fecha+separador+enviaorecibe+separador+transaccionValor+separador+nombreRecibe+separador+nombreEnvia);
+                       String horaTransaccion=resultObj.horaActual;
+                           String fechaMilisegundos=resultObj.horaeMillisegundos;
+
+
+                    listadata.add(id+separador+fecha+separador+enviaorecibe+separador+transaccionValor+separador+nombreRecibe+separador+nombreEnvia+separador+horaTransaccion+separador+fechaMilisegundos);
 
                     // lista_lecciones_items.add(new ItemHomeModel(id, fecha, enviaorecibe, transaccionValor, nombreRecibe, nombreEnvia));
 
-                    lista_lecciones_items.add(new ItemHomeModel(id2, fecha2, enviaorecibe2, transaccionValor2, nombreRecibe2, nombreEnvia2));
+                    lista_lecciones_items.add(new ItemHomeModel(id2, fecha2, enviaorecibe2, transaccionValor2, nombreRecibe2, nombreEnvia2,horaTransaccion,fechaMilisegundos));
 
 
 

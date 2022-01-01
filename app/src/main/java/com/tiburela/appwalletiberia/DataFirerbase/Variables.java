@@ -11,6 +11,7 @@ public class Variables {
 
     public static String nombreyApellidoReceptor;
 
+    public static int NumeroTelefonico; //este usamops ahgora
 
 
 

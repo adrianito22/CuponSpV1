@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
@@ -32,6 +33,7 @@ import com.tiburela.appwalletiberia.ui.home.MoneyTextWatcher;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+@Keep
 
 public class TransaccionFragment extends Fragment {
 

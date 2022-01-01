@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Monedero Electrónico"
+        android:text="Monedero Electrónico Iber"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView

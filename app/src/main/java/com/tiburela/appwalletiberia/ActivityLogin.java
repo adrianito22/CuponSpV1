@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
@@ -20,6 +19,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,15 +28,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.tiburela.appwalletiberia.DataFirerbase.Variables;
 import com.tiburela.appwalletiberia.ui.ActivRecuperaPasword;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class ActivityLogin extends AppCompatActivity {
     EditText useredit;
     EditText paswordedit;
     TextView recuperaTextview;
    Button ocultaYmuestrbtn;
     boolean existeUser=false;
+
+
 
     boolean estaBloqueado=false;
 
@@ -182,7 +181,9 @@ public class ActivityLogin extends AppCompatActivity {
                 if(!validacampos()){
                     return;
                 }
-                checkUserExisteNodeReceptor();
+
+                checkExistMailUser(useredit.getText().toString());
+
 
 
                 mAuth.signInWithEmailAndPassword(useredit.getText().toString(), paswordedit.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -192,50 +193,44 @@ public class ActivityLogin extends AppCompatActivity {
                             if (mAuth.getCurrentUser().isEmailVerified()) {
 
                                 Variables.correoThisUserand_Emisor=useredit.getText().toString();
-
                             Variables.mailFormtToFrtransacc= correoformatedo(Variables.correoThisUserand_Emisor);
 
                              //  checkUserExisteNodeReceptor();
 
-                            if(checkUserExisteNodeReceptor()){
+                                 //checkear si esta bloqueado....si no esta bloqueado ,,ingresamos....
 
+
+
+                                //VA A ALA ACTIVIDAD SI USUARIO NO ESTA BLOQUEADO
                                 thisUserIsBlock(Variables.mailFormtToFrtransacc);
 
-                              //  vamosActivity();
-
-                            }
-
-
-                            else
-                                {
-
-                                Toast.makeText(ActivityLogin.this, "no exite una cuenta con este correo", Toast.LENGTH_SHORT).show();
-
-
-                            }
 
 
                             } else {
 
-                                Toast.makeText(ActivityLogin.this, "por favor verifica tu email", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ActivityLogin.this, "por favor verifica tu correo", Toast.LENGTH_SHORT).show();
 
                             }
+
+
+
+
+
+
 
                         }else {
 
+                              //si no essucefull y existe el correo
 
+                           if(checkExistMailUser(useredit.getText().toString())) {
 
-                            if(checkUserExisteNodeReceptor()&& mAuth.getCurrentUser().isEmailVerified()){
+                               Toast.makeText(ActivityLogin.this, "contraseña incorrecta", Toast.LENGTH_SHORT).show();
 
+                           }else {
 
-                                Toast.makeText(ActivityLogin.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                               Toast.makeText(ActivityLogin.this, "No existe una cuenta con este correo", Toast.LENGTH_SHORT).show();
 
-
-                            }else {
-
-                                Toast.makeText(ActivityLogin.this, "No hay una cuenta con este correo", Toast.LENGTH_SHORT).show();
-
-                            }
+                           }
 
 
 
@@ -509,5 +504,35 @@ public class ActivityLogin extends AppCompatActivity {
        // moveTaskToBack(true);
 
     }
+
+
+private boolean checkExistMailUser(String email){
+
+    mAuth.fetchSignInMethodsForEmail(email)
+            .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                @Override
+                public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+
+                    boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
+
+                    if (isNewUser) {
+                        existeUser=false;
+                        Toast.makeText(ActivityLogin.this, "no existe una cuenta con este correo", Toast.LENGTH_SHORT).show();
+
+                        Log.e("TAG", "Is New User!");
+                    } else {
+                        existeUser=true;
+
+                        Log.e("TAG", "Is Old User!");
+                    }
+
+                }
+            });
+
+    return existeUser;
+}
+
+
+
 
 }

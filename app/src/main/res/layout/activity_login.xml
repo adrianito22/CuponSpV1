@@ -100,14 +100,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:text="olvidaste tu contraseña .Recuperala"
+            android:text="olvidaste tu contraseña. Recuperala"
             android:textColor="#555454" />
 
         <TextView
             android:id="@+id/recuperaTextview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="cllick aqui"
+            android:text="click aquí "
             android:textColor="#FF5722" />
 
     </LinearLayout>
@@ -118,7 +118,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:text="Salir"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -215,7 +215,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/transaprente"
-        android:text="Iniciar Sesion"
+        android:text="Iniciar Sesión"
         android:textColor="#FF5722"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"

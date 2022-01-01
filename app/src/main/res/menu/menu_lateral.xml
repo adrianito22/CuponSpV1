@@ -14,4 +14,16 @@
         android:icon="@drawable/ic_baseline_text_snippet_24"
         android:title="Dudas y Soporte" />
 
+
+    <item
+        android:id="@+id/puntuaapp"
+        android:icon="@drawable/ic_baseline_where_to_vote_24"
+        android:title="Donde Usar" />
+
+
+    <item
+        android:id="@+id/favoritos_paises"
+        android:icon="@drawable/ic_baseline_where_to_vote_24"
+        android:title="Politicas de privacidad" />
+
 </menu>

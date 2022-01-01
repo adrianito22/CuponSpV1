@@ -17,6 +17,7 @@ import com.tiburela.appwalletiberia.R;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Locale;
 
 
@@ -25,12 +26,13 @@ public class AdaptadorPersonajes
         implements View.OnClickListener{
 
 
-
-
     ArrayList<ItemHomeModel> listaPersonajes;
+
+
     private View.OnClickListener listener;
 
     public AdaptadorPersonajes(ArrayList<ItemHomeModel> listaPersonajes, FragmentActivity activity) {
+
         this.listaPersonajes = listaPersonajes;
     }
 
@@ -77,6 +79,8 @@ public class AdaptadorPersonajes
 
             holder.iconotext.setTextColor(Color.parseColor("#018065"));
 
+            holder. textview_horatransaccion.setText(listaPersonajes.get(position).horaActual);
+
 
         }else{
 
@@ -95,6 +99,8 @@ public class AdaptadorPersonajes
             holder.iconotext.setText("-");
             holder.iconotext.setTextColor(Color.parseColor("#db0b0d"));
             holder.iconotext.setTextColor(Color.parseColor("#db0b0d"));
+
+            holder. textview_horatransaccion.setText(listaPersonajes.get(position).horaActual);
 
 
         }
@@ -147,6 +153,8 @@ public class AdaptadorPersonajes
        LinearLayout layout_xw;
       TextView  txt_cantidad_aqui;
 
+
+      TextView textview_horatransaccion;
         TextView  iconotext;
 
         public ViewHolderPersonajes(View itemView) {
@@ -154,7 +162,7 @@ public class AdaptadorPersonajes
             etiNombre= (TextView) itemView.findViewById(R.id.noombreReceptor);
 
             iconotext= (TextView) itemView.findViewById(R.id.iconotext);
-
+            textview_horatransaccion= (TextView) itemView.findViewById(R.id.textview_horatransaccion);
 
             if (Utilidades.visualizacion==Utilidades.LIST){
                 fecha = (TextView) itemView.findViewById(R.id.fecha);

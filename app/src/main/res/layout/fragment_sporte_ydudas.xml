@@ -17,16 +17,9 @@
         <TextView
             android:id="@+id/text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Si tienes dudas ,quieres aportar con una recomendacion o encontraste alguna defecto en la app , por favor ponte en contacto diractamente a traves de los siguientes medios
-: " />
+            android:layout_height="match_parent"
+            android:text="Si tienes dudas, quieres aportar con una recomendación o encontraste algún error en la app, por favor ponte en contacto directamente a través del siguiente correo electrónico: adriapps10@gmail.com" />
 
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="correoAqui" />
     </LinearLayout>
 
 </FrameLayout>

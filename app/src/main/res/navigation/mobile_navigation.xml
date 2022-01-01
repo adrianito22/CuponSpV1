@@ -28,9 +28,9 @@
 
     <fragment
         android:id="@+id/favoritos_paises"
-        android:name="com.tiburela.appwalletiberia.ui.Tarjetas.Tarjetas"
-        android:label="Configuraciones"
-        tools:layout="@layout/fragment_cards" />
+        android:name="com.tiburela.appwalletiberia.fragment.PoliticasPrivacidad"
+        android:label="Politicas de privacidad"
+        tools:layout="@layout/fragment_politicas_privacidad" />
 
     <fragment
         android:id="@+id/conf_acerca"
@@ -41,9 +41,9 @@
 
     <fragment
         android:id="@+id/puntuaapp"
-        android:name="com.tiburela.appwalletiberia.ui.Configuraciones.Configuraciones_y_acerca"
-        android:label="Pago QR"
-        tools:layout="configuraciones_y_acerca" />
+        android:name="com.tiburela.appwalletiberia.fragment.DondeUsar"
+        android:label="Donde Usar"
+        tools:layout="donde_usar" />
 
 
 
@@ -62,14 +62,14 @@
     <fragment
         android:id="@+id/politicas"
         android:name="com.tiburela.appwalletiberia.fragment.SporteYdudas"
-        android:label="Pago QR"
+        android:label="Dudas y Soporte"
         tools:layout="fragment_acerca" />
 
 
     <fragment
         android:id="@+id/atribuciones"
         android:name="com.tiburela.appwalletiberia.fragment.Acerca"
-        android:label="Pago QR"
+        android:label="Acerca"
         tools:layout="fragment_sporte_ydudas" />
 
 

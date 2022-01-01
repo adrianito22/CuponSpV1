@@ -19,6 +19,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -44,6 +45,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
+@Keep
 
 public class HomeFragment extends Fragment implements View.OnClickListener , TextWatcher {
 
@@ -175,10 +177,6 @@ String correoActualToSend ="";
 
 
         dataUsuarioEnvia(generaPathByMail(Variables.correoThisUserand_Emisor));
-
-
-
-
 
 
 
@@ -403,16 +401,21 @@ String correoActualToSend ="";
         listView.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+
                 String item = (String) listView.getItemAtPosition(position);
 
               //  int posicion=listView.getCount();
-                int posicion2=listView.getPositionForView(view);
+               // int posicion2=listView.getPositionForView(view);
 
             //    Toast.makeText(getActivity(),"tu posicion 1 es  : " + posicion,Toast.LENGTH_SHORT).show();
 
               //  Toast.makeText(getActivity(),"tu poscion 2 es : " + posicion2,Toast.LENGTH_SHORT).show();
 
                 //da valores a los nombres
+
+                indexOfString(item,list);
+
+                int posicion2=  indexOfString(item,list);
 
 
                 Variables. correoDestinatario=list2Mails.get(posicion2);
@@ -670,8 +673,6 @@ String correoActualToSend ="";
 
 
 
-
-
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -731,7 +732,15 @@ private void dffd() {
                 // ..
                 totalCuentaQueEnvia=post.saldoActual;
 
-                muestraSladoActual();
+                try{
+
+                    muestraSladoActual();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
 
                 // String dfdf= post.nombre;
                 Log.i("sgdfgdf","el valor es "+totalCuentaQueEnvia );
@@ -770,6 +779,15 @@ private void dffd() {
         return String2terminado;
 
 
+    }
+    public int indexOfString(String searchString, ArrayList<String>domain)
+    {
+        int i;
+        for(i = 0; i < domain.size(); i++)
+            if(searchString.equals(domain.get(i))){
+                return i;
+            }
+        return -1;
     }
 
 

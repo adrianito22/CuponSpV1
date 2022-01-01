@@ -8,10 +8,10 @@ android {
 
     defaultConfig {
         applicationId "com.tiburela.appwalletiberia"
-        minSdk 21
+        minSdk 22
         targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        versionCode 6
+        versionName "6.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -21,6 +21,8 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+
         }
     }
     compileOptions {
@@ -47,13 +49,15 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-database:20.0.3'
     implementation 'com.google.firebase:firebase-storage:20.0.0'
-    implementation 'com.google.android.gms:play-services-auth:20.0.0'
+    implementation 'com.google.android.gms:play-services-auth:20.0.1'
 
     implementation 'com.google.firebase:firebase-appcheck-safetynet:16.0.0-beta04'
 
     implementation "androidmads.library.qrgenearator:QRGenearator:1.0.3"
 
     implementation ("eu.livotov.labs.android:CAMView:2.0.1@aar") {transitive=true
+
+
     }
 
 

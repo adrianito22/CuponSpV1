@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -37,6 +38,7 @@ import com.tiburela.appwalletiberia.R;
 import com.tiburela.appwalletiberia.UsuarioCliente;
 import com.tiburela.appwalletiberia.ui.transaccionesListView.ItemHomeModel;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -45,7 +47,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-
+@Keep
 public class DialogSendUsd extends DialogFragment {
     int indiceX = 0;
 
@@ -455,7 +457,7 @@ private void textocambia() {
 
                     secreonodoEmisor = true;
                     seanadioValues = true;
-                    anadenuevoVaLUE();
+                    anadenuevoVaLUEemisor();
                 } else { //si no existe..le anadimos la data a esta lista
 
 
@@ -596,7 +598,7 @@ private void textocambia() {
         ediCorreoDestinatario.setVisibility(View.GONE);
         btnNo.setVisibility(View.GONE);
         okbtn.setVisibility(View.VISIBLE);
-        txtseguro.setText("Transaccion Exitosa");
+        txtseguro.setText("Transaccion Exitosa 2");
 
         textView10.setVisibility(Button.GONE);
 
@@ -608,6 +610,8 @@ private void textocambia() {
 
 
         Variables.transaccionexistosa=true;
+
+        ocultaDialogo();
 
     }
 
@@ -669,9 +673,16 @@ private void textocambia() {
 
         secreonodoEmisor = true;
 
-        String stringagregar = generandoDataToList("listaUser2", generfecha(), "Enviado", Variables.montoAtransferirse, Variables.nombreyApellidoReceptor);
+        //        String stringagregar=generandoDataToList("listaUser2",generfecha(),"Enviado",Variables.montoAtransferirse,Variables.nombreyApellidoReceptor);
 
-        Log.i("somomasladataesdf","el nombre y appelido emisor es   "+Variables.nombreyApellidoReceptor);
+
+
+        String stringagregar = generandoDataToList("listaUser2", generfecha(), "Enviado", Variables.montoAtransferirse, Variables.nombreyApellidoReceptor,obtenHoraActual(),String.valueOf( System.currentTimeMillis()));
+
+        Log.i("aagsomomasladataesdf","el nombre y appelido receptor  es   "+Variables.nombreyApellidoReceptor);
+
+
+
 
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -692,8 +703,12 @@ private void textocambia() {
         /****
          posiblemente mas adlenate  eliminemos un data base con unn solo objto  basta
          */
+
+
+
+        //        String stringagregar = generandoDataToList("listaUser2", generfecha(), "Enviado", Variables.montoAtransferirse, Variables.nombreyApellidoReceptor,obtenHoraActual(),String.valueOf( System.currentTimeMillis()));
         secreonodoReceptor = true;
-        String stringagregar = generandoDataToList("listaUser2", generfecha(), "Recibido", Variables.montoAtransferirse, Variables.nombreyApellidoEmisor);
+        String stringagregar = generandoDataToList("listaUser2", generfecha(), "Recibido", Variables.montoAtransferirse, Variables.nombreyApellidoEmisor,obtenHoraActual(),obtenDate());
 
 
         Log.i("databbbxs","nombre y appelido emisor es   "+Variables.nombreyApellidoEmisor);
@@ -930,11 +945,11 @@ private void textocambia() {
     }
 
 
-    private String generandoDataToList(String id_value, String fecha, String enviaorecibe, double transaccionValor, String nombreRecpetor_O_emisor) {
+    private String generandoDataToList(String id_value, String fecha, String enviaorecibe, double transaccionValor, String nombreRecpetor_O_emisor,String hora,String timeGenerl) {
 
         final String separador = ",";
 
-        String datattransaccion = id_value + separador + fecha + separador + enviaorecibe + separador + transaccionValor + separador + nombreRecpetor_O_emisor;
+        String datattransaccion = id_value + separador + fecha + separador + enviaorecibe + separador + transaccionValor + separador + nombreRecpetor_O_emisor + separador + hora +separador +timeGenerl;
 
 
         //VAMOS OBTENER LA LISTA......DESPUES LE ANADIMOS DATA
@@ -947,7 +962,6 @@ private void textocambia() {
 
 
     private String generfecha() {
-
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         Date date = new Date();
@@ -975,8 +989,8 @@ private void textocambia() {
 
 
 
-    private void anadenuevoVaLUE(){
-        String stringagregar=generandoDataToList("listaUser2",generfecha(),"Enviado",Variables.montoAtransferirse,Variables.nombreyApellidoReceptor);
+    private void anadenuevoVaLUEemisor(){
+        String stringagregar=generandoDataToList("listaUser2",generfecha(),"Enviado",Variables.montoAtransferirse,Variables.nombreyApellidoReceptor,obtenHoraActual(),String.valueOf( System.currentTimeMillis()));
         DatabaseReference  mDatabase2 = FirebaseDatabase.getInstance().getReference();
 
        // Log.i("pathdebuge","el path recpetor es "+ pathEmisor);
@@ -998,7 +1012,7 @@ private void textocambia() {
 
     private void anadenuevoVaLUERecpetor(){
 
-        String stringagregar=generandoDataToList("listaUser2",generfecha(),"Recibido",Variables.montoAtransferirse,Variables.nombreyApellidoEmisor);
+        String stringagregar=generandoDataToList("listaUser2",generfecha(),"Recibido",Variables.montoAtransferirse,Variables.nombreyApellidoEmisor,obtenHoraActual(),String.valueOf(System.currentTimeMillis()));
         DatabaseReference  mDatabase2 = FirebaseDatabase.getInstance().getReference();
         // Log.i("pathdebuge","el path recpetor es "+ pathEmisor);
         DatabaseReference userReference = mDatabase2.child("transacciones/"+Variables.pathReceptor);
@@ -1006,6 +1020,8 @@ private void textocambia() {
         Map<String, Object> map2 = new HashMap<>();
         map2.put(key, stringagregar);
         userReference.updateChildren(map2);
+
+
 
     }
 
@@ -1047,6 +1063,40 @@ public void recuperadataunavezNodeReceptor(){
 }
 
 
+
+
+
+
+//metoo para obtenerr hora---
+private String obtenHoraActual(){
+
+        String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+
+  //  obtenDate(); //debugeo
+
+
+
+    return currentTime;
+
+
+    }
+
+    private String obtenDate(){
+
+        String currentTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.getDefault()).format(new Date());
+
+        return currentTime;
+
+    }
+
+
+private void ocultaDialogo(){
+
+    linear_layout_01.setVisibility(View.GONE);
+
+
+
+}
 
 
 }

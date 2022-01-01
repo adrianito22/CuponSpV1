@@ -1,5 +1,8 @@
 package com.tiburela.appwalletiberia;
 
+import androidx.annotation.Keep;
+
+@Keep
 public class UsuarioCliente {
     public  String idUser;
     public  String nombre;

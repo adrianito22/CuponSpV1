@@ -12,6 +12,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="25dp"
         android:layout_marginRight="10dp"
-        android:text="Monedero electronico Iber app , es el producto obtenido en base a un proyecto realizado por el laboratoria de ciencia y tecnologia NOMBRE AQUI , dirigido por el tecnologo  Edwin Mocha. Nuestro objetivo es aportar positivamente a nuestra querida comunidad,creeemos firmemente que el desarrollo de un pueblo se consigue tambien haciendo buen uso de la tecnologia y de las inmensas posibilidades que esta nos provee." />
+        android:text="El Monedero electrónico Iber app, es el producto obtenido en base a un  proyecto realizado por el Centro  de Investigación y Desarrollo Tecnológico La Iberia. Creemos firmemente que los pueblos deben estar a la vanguardia con la cultura tecnológica  y valerse de estas herramientas para comercializar y mejorar sus emprendimientos haciendo uso de las transacciones electrónicas .Uno de nuestros objetivos ha sido aportar a la comunidad con esta aplicación que brinda inmensas posibilidades para realizar movimientos de dinero  de una forma versátil, segura y oportuna." />
 
 </FrameLayout>

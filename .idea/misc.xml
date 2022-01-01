@@ -22,7 +22,7 @@
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable/recibido_icon.xml" value="0.18518518518518517" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable/transaprente.xml" value="0.17094017094017094" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/drawable/ventana_background.xml" value="0.14296875" />
-        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/activity_activ_recupera_pasword.xml" value="0.153125" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/activity_activ_recupera_pasword.xml" value="0.25" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/activity_data_base.xml" value="0.21" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/activity_home2.xml" value="0.22" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/activity_login.xml" value="0.33" />
@@ -34,15 +34,18 @@
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/activity_transferir_saldo.xml" value="0.153125" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/app_bar_main.xml" value="0.40185185185185185" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/content_main.xml" value="0.15" />
-        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_acerca.xml" value="0.33" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/donde_usar.xml" value="0.22" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_acerca.xml" value="0.5" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_blank.xml" value="0.2" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_cards.xml" value="0.153125" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_donde_usar.xml" value="0.203125" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_fragmet_camara.xml" value="0.17" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_juego.xml" value="0.22" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_politicas_privacidad.xml" value="0.2074074074074074" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_qr_camera.xml" value="0.17" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_recuperar_contrasena.xml" value="0.25" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_registro.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_sporte_ydudas.xml" value="0.25" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_sporte_ydudas.xml" value="0.33" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_transaccion.xml" value="0.14" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/fragment_verificacion_telef.xml" value="0.1390625" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/home_fragment.xml" value="0.25338753387533874" />
@@ -51,13 +54,13 @@
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/intro_three.xml" value="0.25" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/intro_two.xml" value="0.21" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/layoutxz.xml" value="0.16" />
-        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/lista_partidas_creadas.xml" value="0.33" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/lista_partidas_creadas.xml" value="0.25" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/mainactivityult.xml" value="0.25" />
-        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/nav_header_main.xml" value="0.22" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/nav_header_main.xml" value="0.33" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/next_introslider.xml" value="0.132421875" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/preferencia_fragment.xml" value="0.33" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/qr_layout.xml" value="0.132421875" />
-        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/registrarse.xml" value="0.2303370786516854" />
+        <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/registrarse.xml" value="0.25" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/transaccion_layout.xml" value="0.25" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/venatanagame2.xml" value="0.25" />
         <entry key="..\:/Users/CAPSULE/AndroidStudioProjects/AppWalletIberia/app/src/main/res/layout/venatanagame3.xml" value="0.22" />
@@ -78,7 +81,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.18" />
+        <option name="scale" value="0.33" />
       </ProjectState>
     </option>
   </component>

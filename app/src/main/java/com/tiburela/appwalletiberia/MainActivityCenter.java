@@ -36,11 +36,11 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.Locale;
 import java.util.Objects;
 
-public class MainActivityCenter extends MyBaseActivity {
+public class MainActivityCenter extends AppCompatActivity {
     Handler handler;
     Runnable r;
     private AppBarConfiguration mAppBarConfiguration;
-
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,11 @@ public class MainActivityCenter extends MyBaseActivity {
         configura_idioma();
 
         setContentView(R.layout.mainactivityult);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+
 
        // setSupportActionBar ( toolbar );
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled ( true );
@@ -88,13 +91,16 @@ public class MainActivityCenter extends MyBaseActivity {
 
 
 
+
+
+
         handler = new Handler();
         r = new Runnable() {
 
             @Override
             public void run() {
 
-                Toast.makeText(MainActivityCenter.this, "user inactvo ",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivityCenter.this, "usuario inactivo ",Toast.LENGTH_SHORT).show();
 
                 Intent intencion= new Intent(MainActivityCenter.this, ActivityLogin.class);
                 startActivity(intencion);
@@ -111,17 +117,36 @@ public class MainActivityCenter extends MyBaseActivity {
         super.onUserInteraction();
         stopHandler();//stop first and then start
         startHandler();
+
+
+        Log.d("DDKKFFFF","USSER ITERACTUO ,EMPEZAMOSS NUEVAMENTE");
+
     }
+
+
     public void stopHandler() {
         handler.removeCallbacks(r);
+
+
     }
 
 
     public void startHandler() {
-        handler.postDelayed(r, 2*60*1000); //for 2 minutes
+
+        //90000
+       // handler.postDelayed(r, 2*60*1000); //for 2 minutes
+        handler.postDelayed(r, 90000); //for 2 minutes
 
 
     }
+
+
+
+
+
+
+
+
 
 
 //activa si queremos el menu...
@@ -146,12 +171,26 @@ public class MainActivityCenter extends MyBaseActivity {
 
 
 
+    public void onBackPressed()
+    {
+        // code here to show dialog
+        super.onBackPressed();  // optional depending on your needs
+    }
+
+
+
 
     private void irLogin(){
-        Intent intencion= new Intent(MainActivityCenter.this,ActivityLogin.class);
 
+        Intent intencion= new Intent(MainActivityCenter.this,ActivityLogin.class);
         startActivity(intencion);
+
+        onBackPressed();
+
     }
+
+
+
 
 
     @Override
@@ -278,6 +317,29 @@ public class MainActivityCenter extends MyBaseActivity {
      //   fragmentManager.beginTransaction()
          //       .replace(R.id.fragmentId, mFragment).commit();
 
+
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+       // stopHandler();
+
+        //PROBAAABLEMENTE POENOSSSM, SSSTAAART HANDER..
+        Log.d("DDKKFFFF","ON PAAUSSSSE");
+
+    }
+
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        stopHandler();//stop first and then start
+        startHandler();
+        Log.d("DDKKFFFF","ONREUSMEN");
 
     }
 
