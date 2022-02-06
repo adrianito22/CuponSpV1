@@ -6,21 +6,31 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_baseline_home_24a"
-           android:title="Inicio" />
+            android:icon="@drawable/ic_outline_search_24xx"
+           android:title="Buscar" />
 
 
         <item
             android:id="@+id/lista_paises"
-            android:icon="@drawable/flechas"
-            android:title="Movimientos" />
+            android:icon="@drawable/ic_outline_calendar_today_24fsg"
+            android:title="Reservaciones" />
 
 
         <item
             android:id="@+id/conf_acerca"
-            android:icon="@drawable/ic_baseline_how_to_reg_24"
+            android:icon="@drawable/ic_baseline_favorite_border_24cc"
+            android:title="Favoritos" />
+
+        <item
+            android:id="@+id/acerca"
+            android:icon="@drawable/ic_baseline_perm_identity_24xx"
             android:title="Mi Perfil" />
 
+
+        <item
+            android:id="@+id/configuraciones"
+            android:icon="@drawable/ic_baseline_menu_24xxzxjd"
+            android:title="Mas" />
 
 
     </group>

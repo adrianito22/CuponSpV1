@@ -7,41 +7,41 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.tiburela.appwalletiberia.ui.home.HomeFragment"
+        android:name="com.tiburela.ecuavisit.uiFragments.home.HomeFragment"
         android:label="inicio"
         tools:layout="@layout/home_fragment" />
 
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.tiburela.appwalletiberia.ui.transaccion.TransaccionFragment"
+        android:name="com.tiburela.ecuavisit.uiFragments.transaccion.TransaccionFragment"
         android:label="Wallet"
         tools:layout="@layout/transaccion_layout" />
 
 
     <fragment
         android:id="@+id/lista_paises"
-        android:name="com.tiburela.appwalletiberia.ui.transaccionesListView.TransaccionesFragment"
+        android:name="com.tiburela.ecuavisit.uiFragments.transaccionesListView.TransaccionesFragment"
         android:label="Transacciones"
         tools:layout="@layout/lista_partidas_creadas" />
 
 
     <fragment
         android:id="@+id/favoritos_paises"
-        android:name="com.tiburela.appwalletiberia.fragment.PoliticasPrivacidad"
+        android:name="com.tiburela.ecuavisit.fragments.PoliticasPrivacidad"
         android:label="Politicas de privacidad"
         tools:layout="@layout/fragment_politicas_privacidad" />
 
     <fragment
         android:id="@+id/conf_acerca"
-        android:name="com.tiburela.appwalletiberia.ui.Configuraciones.Configuraciones_y_acerca"
+        android:name="com.tiburela.ecuavisit.uiFragments.Configuraciones.Configuraciones_y_acerca"
         android:label="Mi Perfil"
         tools:layout="configuraciones_y_acerca" />
 
 
     <fragment
         android:id="@+id/puntuaapp"
-        android:name="com.tiburela.appwalletiberia.fragment.DondeUsar"
+        android:name="com.tiburela.ecuavisit.fragments.DondeUsar"
         android:label="Donde Usar"
         tools:layout="donde_usar" />
 
@@ -49,33 +49,33 @@
 
     <fragment
         android:id="@+id/configuraciones"
-        android:name="com.tiburela.appwalletiberia.ui.Configuraciones.Configuraciones_y_acerca"
+        android:name="com.tiburela.ecuavisit.uiFragments.Configuraciones.Configuraciones_y_acerca"
         android:label="Pago QR"
         tools:layout="configuraciones_y_acerca" />
 
     <fragment
         android:id="@+id/licencias"
-        android:name="com.tiburela.appwalletiberia.ui.Configuraciones.Configuraciones_y_acerca"
+        android:name="com.tiburela.ecuavisit.uiFragments.Configuraciones.Configuraciones_y_acerca"
         android:label="Pago QR"
         tools:layout="configuraciones_y_acerca" />
 
     <fragment
         android:id="@+id/politicas"
-        android:name="com.tiburela.appwalletiberia.fragment.SporteYdudas"
+        android:name="com.tiburela.ecuavisit.fragments.SporteYdudas"
         android:label="Dudas y Soporte"
         tools:layout="fragment_acerca" />
 
 
     <fragment
         android:id="@+id/atribuciones"
-        android:name="com.tiburela.appwalletiberia.fragment.Acerca"
+        android:name="com.tiburela.ecuavisit.fragments.Acerca"
         android:label="Acerca"
         tools:layout="fragment_sporte_ydudas" />
 
 
     <fragment
         android:id="@+id/acerca"
-        android:name="com.tiburela.appwalletiberia.ui.Configuraciones.Configuraciones_y_acerca"
+        android:name="com.tiburela.ecuavisit.uiFragments.Configuraciones.Configuraciones_y_acerca"
         android:label="Pago QR"
         tools:layout="fragment_sporte_ydudas" />
 
