@@ -16,6 +16,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -57,6 +58,8 @@ public class MainActivityCenter extends AppCompatActivity {
 
 
 
+
+
         // setSupportActionBar ( toolbar );
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled ( true );
         getSupportActionBar ().setDisplayShowHomeEnabled(true);
@@ -64,6 +67,11 @@ public class MainActivityCenter extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setItemIconTintList(null);
+
+
+        toolbar.setVisibility(View.GONE);
+
+
 
         // drawer.setScrimColor(Color.parseColor("#5eba7d"));
 
