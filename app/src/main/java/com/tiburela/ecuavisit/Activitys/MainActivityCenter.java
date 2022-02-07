@@ -82,7 +82,10 @@ public class MainActivityCenter extends AppCompatActivity {
         mAppBarConfiguration = new AppBarConfiguration.Builder(
 
                 R.id.nav_home, R.id.nav_gallery, R.id.lista_paises,R.id.favoritos_paises, R.id.conf_acerca, R.id.acerca, R.id.atribuciones,R.id.politicas, R.id.licencias ,R.id.puntuaapp)
-                .setDrawerLayout(drawer)
+
+                .setOpenableLayout(drawer)        // WITH THIS LINE
+
+               // .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);

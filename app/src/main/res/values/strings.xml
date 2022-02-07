@@ -19,8 +19,14 @@
     <string name="msg_splash">EducationApp</string>
 
 
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
 
+    <!--for facebook login-->
 
+    <!--facebook login ends-->
+
+    <!--error messages-->
 
 
     <!-- TODO: Remove or change this placeholder text -->

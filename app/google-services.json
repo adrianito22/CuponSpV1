@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "857372510823",
-    "project_id": "monedero-app-capsule",
-    "storage_bucket": "monedero-app-capsule.appspot.com"
+    "project_number": "489207926522",
+    "project_id": "ecuavisit-9430d",
+    "storage_bucket": "ecuavisit-9430d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:857372510823:android:d06114fed7f5b5868e62c2",
+        "mobilesdk_app_id": "1:489207926522:android:1206039ec2c1e2217f8343",
         "android_client_info": {
-          "package_name": "com.tiburela.appwalletiberia"
+          "package_name": "com.tiburela.ecuavisit"
         }
       },
       "oauth_client": [
         {
-          "client_id": "857372510823-r99sq8cgf50pu3jjdee2orgttge11o4e.apps.googleusercontent.com",
+          "client_id": "489207926522-ql9qkkacviu2e3810so8m8majst8htcs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tiburela.ecuavisit",
+            "certificate_hash": "085d4cbea929f456a4107837fddc610f711ce8f7"
+          }
+        },
+        {
+          "client_id": "489207926522-s4m6ul45p7aarutg6hp1jr853psb0uir.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCfnzhbVrzOWNVzBVF3ZZL49HkhduzFA7I"
+          "current_key": "AIzaSyCD2fbe9CsFXXqyK_ZZNjSALI60efUCk5Q"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "857372510823-r99sq8cgf50pu3jjdee2orgttge11o4e.apps.googleusercontent.com",
+              "client_id": "489207926522-s4m6ul45p7aarutg6hp1jr853psb0uir.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
