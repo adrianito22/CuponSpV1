@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/adrix/AndroidStudioProjects/app_WalletIberia/app/src/main/res/layout/fragment_configuraciones_y_acerca.xml" value="0.171875" />
+        <entry key="..\:/Users/adrix/AndroidStudioProjects/app_WalletIberia/app/src/main/res/layout/home_fragment.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/adrix/AndroidStudioProjects/app_WalletIberia/app/src/main/res/menu/activity_main_drawer.xml" value="0.171875" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/drawable-v24/roundz.xml" value="0.1805" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/drawable/activado_btn.xml" value="0.1805" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/drawable/btn_desing.xml" value="0.1805" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/drawable/ic_google_plus.xml" value="0.158" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/drawable/roundz.xml" value="0.1805" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/drawable/roundz_select.xml" value="0.1805" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/layout/activity_login.xml" value="0.3864168618266979" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/layout/activity_login2.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/layout/activity_recupera_pasword.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/layout/activity_sube_lugares.xml" value="0.22" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/layout/activity_sube_lugares_parte2.xml" value="0.22" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/layout/app_bar_main.xml" value="0.12604263206672844" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/layout/botton_shett_nota.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/layout/content_main.xml" value="0.12604263206672844" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/layout/fragment_configuraciones_y_acerca.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/layout/home_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/layout/layout_registro_google.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/layout/lista_partidas_creadas.xml" value="0.12094017094017094" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/layout/logincccx.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/layout/loginxxx.xml" value="0.5" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/layout/mainactivityult.xml" value="0.1" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/layout/nav_header_main.xml" value="0.12604263206672844" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/layout/registrarse.xml" value="0.22" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/menu/activity_main_drawer.xml" value="0.12094017094017094" />
+        <entry key="..\:/Users/adrix/Desktop/EcuaVisit/app/src/main/res/menu/main.xml" value="0.12094017094017094" />
+        <entry key="..\:/Users/adrix/Desktop/app_WalletIberia/app/src/main/res/drawable/search.xml" value="0.1595" />
+        <entry key="..\:/Users/adrix/Desktop/app_WalletIberia/app/src/main/res/drawable/splash_drawable.xml" value="0.1" />
+        <entry key="..\:/Users/adrix/Desktop/app_WalletIberia/app/src/main/res/layout/activity_course_stagged.xml" value="0.11148648648648649" />
+        <entry key="..\:/Users/adrix/Desktop/app_WalletIberia/app/src/main/res/layout/activity_dashboard_course.xml" value="0.11148648648648649" />
+        <entry key="..\:/Users/adrix/Desktop/app_WalletIberia/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/Users/adrix/Desktop/app_WalletIberia/app/src/main/res/layout/card_course_item.xml" value="0.11148648648648649" />
+        <entry key="..\:/Users/adrix/Desktop/app_WalletIberia/app/src/main/res/layout/card_frutorials.xml" value="0.11148648648648649" />
+        <entry key="..\:/Users/adrix/Desktop/app_WalletIberia/app/src/main/res/layout/card_popular_courses.xml" value="0.11148648648648649" />
+        <entry key="..\:/Users/adrix/Desktop/app_WalletIberia/app/src/main/res/layout/fragment_configuraciones_y_acerca.xml" value="0.171875" />
+        <entry key="..\:/Users/adrix/Desktop/app_WalletIberia/app/src/main/res/layout/fragment_courses_stagged.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/adrix/Desktop/app_WalletIberia/app/src/main/res/layout/fragment_home_courses.xml" value="0.22" />
+        <entry key="..\:/Users/adrix/Desktop/app_WalletIberia/app/src/main/res/layout/fragment_matches_courses.xml" value="0.11148648648648649" />
+        <entry key="..\:/Users/adrix/Desktop/app_WalletIberia/app/src/main/res/layout/home_fragment.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/adrix/Desktop/app_WalletIberia/app/src/main/res/layout/homexx.xml" value="0.22" />
+        <entry key="..\:/Users/adrix/Desktop/app_WalletIberia/app/src/main/res/layout/item_card.xml" value="0.1" />
+        <entry key="..\:/Users/adrix/Desktop/app_WalletIberia/app/src/main/res/layout/mainactivityult.xml" value="0.171875" />
+        <entry key="..\:/Users/adrix/Desktop/app_WalletIberia/app/src/main/res/menu/activity_main_drawer.xml" value="0.171875" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>
