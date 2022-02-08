@@ -38,15 +38,17 @@ public class RegistroActivity extends AppCompatActivity implements View.OnTouchL
 
     View root;
   String contrasena_string;
-EditText ediNomnre;
     private EditText mEditText;
 String stringNumeroTelefonico;
     private DatabaseReference myDatabaseReference;
-    EditText contrasena_Editxt;
     boolean estamostrandoPasword=false;
 
     Button ocultaYmuestrbtn2;
 
+
+    EditText ediNomnre;
+
+    EditText contrasena_Editxt;
 EditText ediApellido;
 EditText numeroTelefonico;
 EditText correo;

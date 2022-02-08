@@ -54,7 +54,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline18">
 
             <EditText
-                android:id="@+id/correouser"
+                android:id="@+id/nombreEstabecimientoEdi"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
@@ -94,7 +94,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline21">
 
             <EditText
-                android:id="@+id/contrasenauser"
+                android:id="@+id/decripcionEdi"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
@@ -143,7 +143,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline22">
 
             <EditText
-                android:id="@+id/correoEdixt"
+                android:id="@+id/direccionEdi"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
@@ -198,6 +198,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.41" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline59"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.63" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline24"
@@ -265,12 +272,12 @@
             android:orientation="horizontal"
             android:tag="password"
             app:layout_constraintBottom_toTopOf="@+id/guideline12"
-            app:layout_constraintEnd_toStartOf="@+id/guideline20"
+            app:layout_constraintEnd_toStartOf="@+id/guideline59"
             app:layout_constraintStart_toStartOf="@+id/guideline19"
             app:layout_constraintTop_toTopOf="@+id/guideline24">
 
-            <EditText
-                android:id="@+id/ediTextContrasena"
+            <TextView
+                android:id="@+id/subeFotoEdi"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
@@ -279,6 +286,7 @@
 
 "
                 android:ems="10"
+                android:gravity="center_vertical"
                 android:hint="Sube una foto"
                 android:inputType="textPassword"
                 android:tag="password"
@@ -295,19 +303,19 @@
 
                 <Button
                     android:id="@+id/ocultaYmuestrbtn2"
-                    android:layout_width="26dp"
-                    android:layout_height="26dp"
-                    android:background="@drawable/ic_baseline_visibility_24" />
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_baseline_upload_file_24" />
             </LinearLayout>
 
         </LinearLayout>
 
         <Button
-            android:id="@+id/btinicirsesion"
+            android:id="@+id/btnContinuar"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/btn_desing"
-            android:text="Registrarse"
+            android:text="Continuar"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="17sp"
@@ -329,13 +337,11 @@
             app:layout_constraintTop_toTopOf="@+id/guideline43">
 
             <EditText
-                android:id="@+id/numeroTelefonico"
+                android:id="@+id/numeroTelefonicoEdi"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
-                android:background="#00123456
-
-"
+                android:background="#00123456"
                 android:hint="Numero Telefonico"
                 android:inputType="textPersonName"
                 android:tag="numerotelefonico"
@@ -360,7 +366,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
-            android:text="Crea una Cuenta"
+            android:text="Sube un Establecimineto"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -419,7 +425,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="PasAqui"
+            android:text="Parte 1"
+            android:textSize="17sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline17"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="@+id/guideline19"

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -42,6 +43,11 @@ import com.tiburela.ecuavisit.models.UsuarioCliente;
 import com.tiburela.ecuavisit.variablesGlobales.Variables;
 
 public class LoginActivity extends AppCompatActivity {
+
+    Button ocultaMuestraTexto ;
+
+    boolean estamostrandoPasword=false;
+
     SignInButton signInButton;
     private static final int RC_SIGN_IN = 9001;
     private static final String TAG = "GoogleActivity";
@@ -270,6 +276,37 @@ FirebaseDatabase firebaseDatabase;
 
 
 
+        ocultaMuestraTexto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!estamostrandoPasword) {
+                    contrasenauser.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+
+                    estamostrandoPasword = true;
+
+
+                    ocultaMuestraTexto.setBackgroundResource(R.drawable.ic_baseline_visibility_off_24a);
+
+
+                } else { //escondemos
+
+                    contrasenauser.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    ocultaMuestraTexto.setBackgroundResource(R.drawable.ic_baseline_visibility_24);
+
+                    estamostrandoPasword = false;
+
+
+                }
+
+
+
+            }
+        });
+
+
+
+
+
 
     }
 
@@ -282,6 +319,9 @@ FirebaseDatabase firebaseDatabase;
 
         signInButton = findViewById(R.id.sign_in_button);
         textviewOlvidastePass=findViewById(R.id.textviewOlvidastePass);
+
+
+        ocultaMuestraTexto=findViewById(R.id.ocultaYmuestrbtn2);
 
     }
 

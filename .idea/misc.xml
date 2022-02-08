@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/CAPSULE/Desktop/EcuaVisit/app/src/main/res/layout/activity_login2.xml" value="0.33" />
+        <entry key="..\:/Users/CAPSULE/Desktop/EcuaVisit/app/src/main/res/layout/activity_sube_lugares.xml" value="0.22" />
+        <entry key="..\:/Users/CAPSULE/Desktop/EcuaVisit/app/src/main/res/layout/registrarse.xml" value="0.203125" />
         <entry key="..\:/Users/adrix/AndroidStudioProjects/app_WalletIberia/app/src/main/res/layout/fragment_configuraciones_y_acerca.xml" value="0.171875" />
         <entry key="..\:/Users/adrix/AndroidStudioProjects/app_WalletIberia/app/src/main/res/layout/home_fragment.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/adrix/AndroidStudioProjects/app_WalletIberia/app/src/main/res/menu/activity_main_drawer.xml" value="0.171875" />

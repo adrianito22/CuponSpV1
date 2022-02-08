@@ -9,9 +9,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/iberlogo_icono"
+        android:icon="@mipmap/ecuavisitlogo"
         android:label="Ecuavisit"
-        android:roundIcon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ecuavisitlogo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
         <activity

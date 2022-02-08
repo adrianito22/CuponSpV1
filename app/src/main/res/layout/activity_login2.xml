@@ -68,7 +68,7 @@
 
             <EditText
                 android:id="@+id/contrasenauser"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:background="#00123456
@@ -76,9 +76,25 @@
 "
                 android:ems="10"
                 android:hint="Contrasena"
-                android:inputType="textCapSentences"
+                android:inputType="textPassword"
                 android:tag="apellido"
                 android:textColorHighlight="#FFC107" />
+
+            <LinearLayout
+                android:id="@+id/ocultaMuestraTexto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/ocultaYmuestrbtn2"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:background="@drawable/ic_baseline_visibility_24" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <androidx.constraintlayout.widget.Guideline
