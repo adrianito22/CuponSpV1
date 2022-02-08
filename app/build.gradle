@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.application'
-    id 'com.google.gms.google-services'
 }
 
 android {
@@ -10,7 +9,7 @@ android {
         applicationId "com.tiburela.ecuavisit"
         minSdk 22
         targetSdk 31
-        versionCode 6
+        versionCode 1
         versionName "6.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -52,8 +51,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:20.0.1'
 
     implementation 'com.google.firebase:firebase-appcheck-safetynet:16.0.0-beta04'
+    apply plugin: 'com.google.gms.google-services'
 
-    implementation 'com.google.firebase:firebase-auth:21.0.1'
 
 
 

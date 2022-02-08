@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.65" />
+            app:layout_constraintGuide_percent="0.57" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline4"
@@ -99,14 +99,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.72" />
+            app:layout_constraintGuide_percent="0.62" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline43"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.59" />
+            app:layout_constraintGuide_percent="0.5" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline21"
@@ -162,7 +162,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.78" />
+            app:layout_constraintGuide_percent="0.68" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline15"
@@ -250,6 +250,7 @@
             android:background="@drawable/roundz"
             android:orientation="horizontal"
             android:tag="password"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/guideline12"
             app:layout_constraintEnd_toStartOf="@+id/guideline20"
             app:layout_constraintStart_toStartOf="@+id/guideline19"
@@ -268,6 +269,7 @@
                 android:hint="   Contraseña"
                 android:inputType="textPassword"
                 android:tag="password"
+                android:text="sfdgfdA2233@"
                 android:textColorHighlight="#FFC107"
                 android:textColorHint="#A1A1A1"
                 android:textColorLink="#FFC107" />
@@ -293,7 +295,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/btn_desing"
-            android:text="Registrarse"
+            android:text="Completar Registro"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="17sp"
@@ -323,7 +325,7 @@
 
 "
                 android:hint="   Numero Telefonico"
-                android:inputType="phone"
+                android:inputType="textPersonName"
                 android:tag="numerotelefonico"
                 android:textColorHighlight="#FFC107" />
         </LinearLayout>
@@ -346,7 +348,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
-            android:text="Crea una Cuenta"
+            android:text="Termina el Registro"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"

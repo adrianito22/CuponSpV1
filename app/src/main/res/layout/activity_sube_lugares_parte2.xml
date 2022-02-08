@@ -14,6 +14,20 @@
         android:background="#EFEDED">
 
         <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline60"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline61"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,7 +60,7 @@
                 android:layout_marginLeft="15dp"
                 android:background="#00123456"
                 android:ems="10"
-                android:hint="   Nombre"
+                android:hint="Seleciona La Ubicacion"
                 android:inputType="textCapSentences"
                 android:tag="nombre"
                 android:textColorHighlight="#FFC107"
@@ -88,7 +102,7 @@
 
 "
                 android:ems="10"
-                android:hint="   Apellido"
+                android:hint="Seleciona el plan "
                 android:inputType="textCapSentences"
                 android:tag="apellido"
                 android:textColorHighlight="#FFC107" />
@@ -137,7 +151,7 @@
 
 "
                 android:ems="10"
-                android:hint="   Correo Electrónico"
+                android:hint="Direccion"
                 android:inputType="textPersonName"
                 android:tag="correo"
                 android:textColorHighlight="#FFC107" />
@@ -265,7 +279,7 @@
 
 "
                 android:ems="10"
-                android:hint="   Contraseña"
+                android:hint="Sube una foto"
                 android:inputType="textPassword"
                 android:tag="password"
                 android:textColorHighlight="#FFC107"
@@ -322,8 +336,8 @@
                 android:background="#00123456
 
 "
-                android:hint="   Numero Telefonico"
-                android:inputType="phone"
+                android:hint="Numero Telefonico"
+                android:inputType="textPersonName"
                 android:tag="numerotelefonico"
                 android:textColorHighlight="#FFC107" />
         </LinearLayout>
@@ -346,7 +360,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
-            android:text="Crea una Cuenta"
+            android:text="Como llegar Y fotos"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -399,6 +413,17 @@
             app:layout_constraintStart_toStartOf="@+id/guideline37"
             app:layout_constraintTop_toTopOf="@+id/guideline18"
             app:srcCompat="@drawable/ic_baseline_person_24bb" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Paso 2"
+            app:layout_constraintEnd_toStartOf="@+id/guideline17"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="@+id/guideline19"
+            app:layout_constraintTop_toTopOf="@+id/guideline60" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.tiburela.ecuavisit.Activitys;
 
 import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.VIBRATE;
+import static android.content.ContentValues.TAG;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +21,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -31,30 +33,49 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.tiburela.ecuavisit.LoginAndRegistro.ActivityLogin;
+import com.tiburela.ecuavisit.LoginAndRegistro.RegistroCuentaGoogle;
 import com.tiburela.ecuavisit.R;
+import com.tiburela.ecuavisit.models.UsuarioCliente;
+import com.tiburela.ecuavisit.variablesGlobales.Variables;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 
 public class MainActivityCenter extends AppCompatActivity {
-    Handler handler;
-    Runnable r;
     private AppBarConfiguration mAppBarConfiguration;
     Toolbar toolbar;
+    String   userIDCurrentUser;
+    DatabaseReference ref;
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        configura_idioma();
-
         setContentView(R.layout.mainactivityult);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        configura_idioma();
 
 
 
@@ -65,8 +86,8 @@ public class MainActivityCenter extends AppCompatActivity {
         getSupportActionBar ().setDisplayShowHomeEnabled(true);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setItemIconTintList(null);
+      //  NavigationView navigationView = findViewById(R.id.nav_view);
+     //   navigationView.setItemIconTintList(null);
 
 
         toolbar.setVisibility(View.GONE);
@@ -89,7 +110,7 @@ public class MainActivityCenter extends AppCompatActivity {
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+      //  NavigationUI.setupWithNavController(navigationView, navController);
 
 
         getSupportActionBar ().setDisplayHomeAsUpEnabled ( true );
@@ -106,55 +127,46 @@ public class MainActivityCenter extends AppCompatActivity {
 
 
 
-
-        handler = new Handler();
-        r = new Runnable() {
-
-            @Override
-            public void run() {
-
-              //  Toast.makeText(MainActivityCenter.this, "usuario inactivo ",Toast.LENGTH_SHORT).show();
-
-             //   Intent intencion= new Intent(MainActivityCenter.this, ActivityLogin.class);
-            //    startActivity(intencion);
-
-                // TODO Auto-generated method stub
-            }
-        };
-        startHandler();
-
     }
+
+
+
+
     @Override
-    public void onUserInteraction() {
-        // TODO Auto-generated method stub
-        super.onUserInteraction();
-        stopHandler();//stop first and then start
-        startHandler();
+    protected void onStart() {
+        super.onStart();
+
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if(account!=null){
+            account.getDisplayName();
+            account.getFamilyName();
+            Log.i("eluserest","aqui hay data el user es "+account.getEmail());
+
+            //verificamos que el perfil este completo..
+
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if(user!=null){
+                userIDCurrentUser=user.getUid();
+                // String nameCurretnUSER=ref.getST
+                ref= FirebaseDatabase.getInstance().getReference().child("Clientes").child(userIDCurrentUser);
 
 
-        Log.d("DDKKFFFF","USSER ITERACTUO ,EMPEZAMOSS NUEVAMENTE");
+                //vamos a datachange
+
+               addPostEventListener(ref);
+
+
+            }
+
+
+
+
+        }
+
+
+
 
     }
-
-
-    public void stopHandler() {
-        handler.removeCallbacks(r);
-
-
-    }
-
-
-    public void startHandler() {
-
-        //90000
-        // handler.postDelayed(r, 2*60*1000); //for 2 minutes
-        handler.postDelayed(r, 90000); //for 2 minutes
-
-
-    }
-
-
-
 
 
 
@@ -321,11 +333,71 @@ public class MainActivityCenter extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        stopHandler();//stop first and then start
-        startHandler();
         Log.d("DDKKFFFF","ONREUSMEN");
 
     }
+
+
+
+
+
+        private void addPostEventListener(DatabaseReference mPostReference) {
+            // [START post_value_event_listener]
+            ValueEventListener postListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // Get Post object and use the values to update the UI
+
+                    Variables.globalUsuarioClienteObj = dataSnapshot.getValue(UsuarioCliente.class);
+
+                    Log.i("solodataaqui","midata eel nombre es  "+Variables.globalUsuarioClienteObj.getNombre());
+
+                  //  Toast.makeText(MainActivityCenter.this, "EL NOMBRE ES "+usuarioClienteObjecCurrent.getNombre(), Toast.LENGTH_SHORT).show();
+
+                    if(Variables.globalUsuarioClienteObj.getNombre().length()==0){//noa a completado el nombre
+
+                        Toast.makeText(MainActivityCenter.this, "Completa el registro", Toast.LENGTH_SHORT).show();
+                      startActivity(new Intent(MainActivityCenter.this, RegistroCuentaGoogle.class));
+
+                    }else {
+
+                        Variables.user2=Variables.globalUsuarioClienteObj;
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Getting Post failed, log a message
+                    Log.w(TAG, "loadPost:onCancelled", error.toException());
+                }
+
+
+            };
+            mPostReference.addValueEventListener(postListener);
+            // [END post_value_event_listener]
+        }
+
+
+
+
+
+
+
+
+
+
+    public void SaelUseryPasword(){
+
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(MainActivityCenter.this, LoginActivity.class));
+
+
+    }
+
+
+
+
 
 
 }

@@ -15,10 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
         <activity
-            android:name=".Activitys.LoginActivity"
-            android:exported="true" />
+            android:name=".LoginAndRegistro.RecuperaPasword"
+            android:exported="false" />
         <activity
-            android:name=".Activitys.MainActivityCenter"
+            android:name=".Activitys.SubeLugares"
+            android:exported="false" />
+        <activity
+            android:name=".Activitys.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +30,12 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".LoginAndRegistro.RegistroCuentaGoogle"
+            android:exported="true" />
+        <activity
+            android:name=".Activitys.MainActivityCenter"
+            android:exported="true"></activity>
+        <activity
             android:name=".LoginAndRegistro.RegistroActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
@@ -34,12 +43,12 @@
             android:name=".LoginAndRegistro.ActivRecuperaPasword"
             android:configChanges="orientation"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LoginAndRegistro.ActivityLogin"
             android:configChanges="orientation"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

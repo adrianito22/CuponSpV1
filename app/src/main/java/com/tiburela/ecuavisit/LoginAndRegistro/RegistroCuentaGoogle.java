@@ -17,6 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -34,7 +36,7 @@ import com.tiburela.ecuavisit.models.UsuarioCliente;
 import com.tiburela.ecuavisit.variablesGlobales.Variables;
 
 
-public class RegistroActivity extends AppCompatActivity implements View.OnTouchListener {
+public class RegistroCuentaGoogle extends AppCompatActivity implements View.OnTouchListener {
 
     View root;
   String contrasena_string;
@@ -42,10 +44,12 @@ EditText ediNomnre;
     private EditText mEditText;
 String stringNumeroTelefonico;
     private DatabaseReference myDatabaseReference;
-    EditText contrasena_Editxt;
+  //  EditText contrasena_Editxt;
     boolean estamostrandoPasword=false;
 
     Button ocultaYmuestrbtn2;
+
+
 
 EditText ediApellido;
 EditText numeroTelefonico;
@@ -69,15 +73,13 @@ private static final String ARG_PARAM2 = "param2";
 private String mParam1;
 private String mParam2;
 
-public RegistroActivity() {
-// Required empty public constructor
-}
 
-    public RegistroActivity(EditText editText) {
+/*
+    public RegistroCuentaGoogle(EditText editText) {
         mEditText = editText;
     }
 
-
+*/
 
 
 
@@ -85,13 +87,17 @@ public RegistroActivity() {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.registrarse);
+        setContentView(R.layout.layout_registro_google);
 
         inicilizaViews();
 
-       // FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+
+        llenaSomeEditext();
+
+
         myDatabaseReference=FirebaseDatabase.getInstance().getReference("Clientes");
 
+      //  FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
 
 
@@ -116,7 +122,7 @@ public RegistroActivity() {
 private void agregatouchs(){
 
     ediNomnre.setOnTouchListener(this);
-     contrasena_Editxt.setOnTouchListener(this);
+    // contrasena_Editxt.setOnTouchListener(this);
 
      ediApellido.setOnTouchListener(this);
      numeroTelefonico.setOnTouchListener(this);
@@ -175,7 +181,10 @@ public void obtieneTexto(){
 
     stringNumeroTelefonico=numeroTelefonico.getText().toString();
     email =correo.getText().toString();
-    contrasena_string=contrasena_Editxt.getText().toString();
+   // contrasena_string=contrasena_Editxt.getText().toString();
+
+
+
 
 
     if(! ediNomnre.getText().toString().matches("(?i)(^[a-z])((?![ .,'-]$)[a-z .,'-]){0,24}$")) {
@@ -205,10 +214,24 @@ public void obtieneTexto(){
         correo.requestFocus();
 
         return;
+    }else {
+
+        //verificamos que sea el mnismo correo que el anterior..
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if(account!=null){
+
+String correoOfEdit=correo.getText().toString();
+
+if(!correoOfEdit.equals(account.getEmail())){
+
+    correo.setError("correo debe ser el mismo de tu cuenta de google ");
+    correo.requestFocus();
+}
+
+
+        }
+
     }
-
-    //private void creaNuevoUser(String nombre,String apellido,String correoElectronico,int userIdCategory,int nivelVerificacion,String password){
-
 
 
 
@@ -257,74 +280,6 @@ public void obtieneTexto(){
 
 
 
-
-
-
-        if (contrasena_string.isEmpty()) {
-            contrasena_Editxt.setError("contrasena es requerida");
-            contrasena_Editxt.requestFocus();
-            return;
-        }
-
-        if (contrasena_string.length() < 6) {
-            contrasena_Editxt .setError("el tamano minimo de contrasena es 6");
-            contrasena_Editxt .requestFocus();
-            return;
-        }
-
-
-
-
-        mAuth.createUserWithEmailAndPassword(email, contrasena_string).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-             //   progressBar.setVisibility(View.GONE);
-                if (task.isSuccessful()) {
-
-                    FirebaseUser user =FirebaseAuth.getInstance().getCurrentUser();
-                    user.sendEmailVerification();
-
-                     userIDCurrentUser=user.getUid();
-
-                    Toast.makeText(RegistroActivity.this, "registro exitoso", Toast.LENGTH_SHORT).show();
-                  //  finish();
-
-                   Variables. correoCurrent=email;
-                   Variables.paswordTemporal=contrasena_string;
-                   Variables.mailTemporal=email;
-
-
-                   //muestra animcion de registrando
-
-                    muestraSheetCorreoEnviado();
-
-
-                        //agregamos un nuevo user
-                    creaNuevoUser(ediNomnre.getText().toString(),ediApellido.getText().toString(),numeroTelefonico.getText().toString(),email,1,0,contrasena_string,"");
-
-
-
-
-
-                } else {
-
-                    if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-                        Toast.makeText(RegistroActivity.this, "Tu correo ya esta registrado", Toast.LENGTH_SHORT).show();
-
-                        startActivity(new Intent(RegistroActivity.this,LoginActivity.class));
-
-
-                    } else {
-                        Toast.makeText(RegistroActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-            }
-        });
-
-
-
-
         if(email.length()>5){ //obtenemos el texto y lo gaudamos en el string
 
             paso2();
@@ -332,17 +287,15 @@ public void obtieneTexto(){
         }else{
 
 
-            Toast.makeText(RegistroActivity.this, "coloca un correo valido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegistroCuentaGoogle.this, "coloca un correo valido", Toast.LENGTH_SHORT).show();
 
         }
 
 
-
+    actualizaProfile(ediNomnre.getText().toString(),ediApellido.getText().toString(),numeroTelefonico.getText().toString(),email,1,0,"isGoogleAuth","");
 
 
     }
-
-
 
     private void inicilizaViews(){
 
@@ -351,9 +304,8 @@ public void obtieneTexto(){
         numeroTelefonico=findViewById(R.id.numeroTelefonico);
         correo=findViewById(R.id.correoEdixt);
          btnRegistrarse=findViewById(R.id.btinicirsesion);
-        contrasena_Editxt=findViewById(R.id.ediTextContrasena);
+      //  contrasena_Editxt=findViewById(R.id.ediTextContrasena);
         ocultaYmuestrbtn2=findViewById(R.id.ocultaYmuestrbtn2);
-
 
                laynombre=findViewById(R.id.laynombre);
                 layoutapellido=findViewById(R.id.layoutapellido);
@@ -378,6 +330,9 @@ public void obtieneTexto(){
         });
 
 
+
+
+        /*
         ocultaYmuestrbtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -404,6 +359,11 @@ public void obtieneTexto(){
 
             }
         });
+   */
+
+
+
+
     }
 
 
@@ -508,78 +468,7 @@ private void textwatchadd(){
 
 
 
-    private void muestraSheetCorreoEnviado(){
 
-            final BottomSheetDialog bottomSheetDialognota = new BottomSheetDialog(RegistroActivity.this);
-            bottomSheetDialognota.setContentView(R.layout.botton_shett_nota);
-
-            TextView note = bottomSheetDialognota.findViewById(R.id.txtNotaAqui);
-            TextView tituloAqui= bottomSheetDialognota.findViewById(R.id.tituloAqui);
-            TextView subtitulo= bottomSheetDialognota.findViewById(R.id.subtitulo);
-
-        Button btCerrar = bottomSheetDialognota.findViewById(R.id.btCerrar);
-
-            // LinearLayout layoutcambiardata = bottomSheetDialog.findViewById(R.id.layoutcambiardata);
-
-        String nota= "Hemos enviado un correo electronico a "+Variables. correoCurrent;
-        String titulo= " ! Registro Exitoso !" ;
-        String subtituloString="Se necesita confirmacion de correo Eelectronico";
-
-        String btnTexto="Entendido";
-        btCerrar.setText(btnTexto);
-
-
-        note .setText(nota);
-        tituloAqui.setText(titulo);
-        subtitulo.setText(subtituloString);
-
-
-            btCerrar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                     startActivity(new Intent(RegistroActivity.this, LoginActivity.class));
-
-                    bottomSheetDialognota.dismiss();
-
-                }
-            });
-
-
-            bottomSheetDialognota.show();
-
-        }
-
-    private void corregirCorreoBootonSheet(){
-
-        final BottomSheetDialog bottomSheetDialognota = new BottomSheetDialog(RegistroActivity.this);
-        bottomSheetDialognota.setContentView(R.layout.botton_shett_nota);
-
-        TextView note = bottomSheetDialognota.findViewById(R.id.txtNotaAqui);
-        Button btCerrar = bottomSheetDialognota.findViewById(R.id.btCerrar);
-        // LinearLayout layoutcambiardata = bottomSheetDialog.findViewById(R.id.layoutcambiardata);
-
-        String nota= "Introduce el correo electronico Aqui"+Variables. correoCurrent;
-
-        String titulo= "Asegurate de Escribirlo Correctamente";
-
-
-        note .setText(nota);
-
-
-        btCerrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                bottomSheetDialognota.dismiss();
-            }
-        });
-
-
-
-
-        bottomSheetDialognota.show();
-    }
 
 
 private void creaNuevoUser(String nombre,String apellido,String numeroTelefonico,String correoElectronico,int userIdCategory,int nivelVerificacion,String password,String photourl){
@@ -590,6 +479,57 @@ private void creaNuevoUser(String nombre,String apellido,String numeroTelefonico
     myDatabaseReference.child(userIDCurrentUser).setValue(userClienteObj);
 
 }
+
+
+
+
+   private void  llenaSomeEditext(){
+       GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+       if(account!=null){
+
+
+           correo.setText(account.getEmail());
+           ediNomnre.setText(account.getGivenName());
+           ediApellido.setText(account.getFamilyName());
+
+           FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+if(user!=null){
+    userIDCurrentUser=user.getUid();
+
+}
+
+
+       }
+
+
+
+   }
+
+
+    private void actualizaProfile (String nombre,String apellido,String numeroTelefonico,String correoElectronico,int userIdCategory,int nivelVerificacion,String password,String photourl){
+        try {
+            DatabaseReference ref=FirebaseDatabase.getInstance().getReference().child("Clientes").child(userIDCurrentUser);
+            UsuarioCliente userClienteObj= new UsuarioCliente(nombre,apellido,numeroTelefonico,correoElectronico,userIdCategory,nivelVerificacion,password,photourl);
+            Toast.makeText(this, "Registro Completado", Toast.LENGTH_SHORT).show();
+
+            startActivity(new Intent(RegistroCuentaGoogle.this, MainActivityCenter.class));
+            ref.setValue(userClienteObj);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Se produjo un error", Toast.LENGTH_SHORT).show();
+
+        }
+
+
+
+
+
+
+    }
+
+
+
 
 
 }

@@ -10,12 +10,15 @@ private String Nombre;
     private String correoElectronico;
     private int useridCategory; //usaurio 1 es un suaurio normal..
     private int nivelDeVerificacion; //si es 0 aun no a confirmado correo..
+    private String photoProfileUrl;
 
 
+public UsuarioCliente(){
+
+}
 
 
-
-    public UsuarioCliente(String Nombre,String apellido, String numeroTelefonico, String correoElectronico, int useridCategory, int nivelDeVerificacion, String password) {
+    public UsuarioCliente(String Nombre,String apellido, String numeroTelefonico, String correoElectronico, int useridCategory, int nivelDeVerificacion, String password, String photoProfileUrl) {
         this.Nombre = Nombre;
         this.apellido = apellido;
 
@@ -24,7 +27,7 @@ private String Nombre;
         this.useridCategory = useridCategory;
         this.nivelDeVerificacion = nivelDeVerificacion;
         this.password = password;
-
+        this.photoProfileUrl=photoProfileUrl;
 
     }
 
@@ -52,6 +55,14 @@ private String Nombre;
         this.password = password;
     }
 
+
+    public String getPhotoProfileUrl() {
+        return photoProfileUrl;
+    }
+
+    public void setPhotoProfileUrl(String photoProfileUrl) {
+        this.photoProfileUrl = photoProfileUrl;
+    }
 
 
 

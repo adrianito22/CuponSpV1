@@ -93,7 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.17" />
+            app:layout_constraintGuide_percent="0.1" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline37"
@@ -152,17 +152,24 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.81" />
 
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline49"
+            tools:ignore="MissingConstraints">
+
+        </com.google.android.gms.common.SignInButton>
+
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             app:layout_constraintTop_toTopOf="@+id/guideline49">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/ic_google_plus" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.Guideline
@@ -187,7 +194,7 @@
             app:layout_constraintGuide_percent="0.32" />
 
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/textviewOlvidastePass"
             style="@style/viewParent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -212,7 +219,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.88" />
+            app:layout_constraintGuide_percent="0.9" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
