@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "489207926522-2hrt7hse09fovkd521eu3b02qt4v1rng.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tiburela.ecuavisit",
+            "certificate_hash": "d30dddec7b74fd4538e7c4e96996e50765d59c69"
+          }
+        },
+        {
           "client_id": "489207926522-ql9qkkacviu2e3810so8m8majst8htcs.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

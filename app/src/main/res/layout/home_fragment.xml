@@ -18,13 +18,13 @@
 
         <LinearLayout
 
+            android:id="@+id/laycot"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             android:background="#ffba60"
 
-            android:orientation="vertical"
-
-            >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_weight="40"
                     android:fontFamily="@font/bariol_bold"
-                    android:text="Hey, Que destino crees que te espera hoy ?"
+                    android:text="Hey, Que super oferta crees que  te espera hoy ?"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="25sp">
 
@@ -80,7 +80,7 @@
                 android:fontFamily="@font/bariol_regular"
 
                 android:gravity="center_vertical"
-                android:hint="Busca un Destino"
+                android:hint="Busca una Tienda"
 
 
                 android:imeOptions="actionSearch"
@@ -115,7 +115,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:layout_marginLeft="20dp"
-                        android:text="Destinos Populares" />
+                        android:text="Ofertas Destacadas" />
 
                     <TextView
                         style="@style/viewParent"
@@ -151,6 +151,70 @@
 
                 </LinearLayout>
             </HorizontalScrollView>
+
+            <LinearLayout
+                android:id="@+id/laycops"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Todos"
+                    android:textSize="25sp" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="20dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <include layout="@layout/card_cupons" />
+
+                        <include layout="@layout/card_cupons" />
+
+                        <include layout="@layout/card_cupons" />
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="20dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <include layout="@layout/card_cupons" />
+
+                        <include layout="@layout/card_cupons" />
+
+                        <include layout="@layout/card_cupons" />
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:orientation="vertical"></LinearLayout>
+            </LinearLayout>
+
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

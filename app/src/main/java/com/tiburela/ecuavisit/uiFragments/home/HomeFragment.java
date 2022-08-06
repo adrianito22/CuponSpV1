@@ -105,10 +105,15 @@ String correoActualToSend ="";
 
         super.onStart();
 
+
+
+
        if(Variables.currentSaludo!=null){
            textviewSaludo.setText( Variables.currentSaludo);
 
        }
+
+
 
 
     }
@@ -187,7 +192,7 @@ String correoActualToSend ="";
 
                 String firstWord = arr[0];
 
-                String textoSaludo= " Hey "+ firstWord+", Que destino crees que te espera hoy ?";
+                String textoSaludo= " Hey "+ firstWord+", Que oferta crees que te espera hoy ?";
 
 
                 Variables.currentSaludo=textoSaludo;

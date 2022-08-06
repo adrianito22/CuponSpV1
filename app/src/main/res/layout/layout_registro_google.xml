@@ -40,7 +40,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline18">
 
             <EditText
-                android:id="@+id/correouser"
+                android:id="@+id/nombre"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
@@ -80,7 +80,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline21">
 
             <EditText
-                android:id="@+id/contrasenauser"
+                android:id="@+id/apellido"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"

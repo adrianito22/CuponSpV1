@@ -28,7 +28,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.tiburela.ecuavisit.Activitys.LoginActivity;
-import com.tiburela.ecuavisit.Activitys.MainActivityCenter;
 import com.tiburela.ecuavisit.R;
 import com.tiburela.ecuavisit.models.UsuarioCliente;
 import com.tiburela.ecuavisit.variablesGlobales.Variables;
@@ -40,15 +39,11 @@ public class RegistroActivity extends AppCompatActivity implements View.OnTouchL
   String contrasena_string;
     private EditText mEditText;
 String stringNumeroTelefonico;
-    private DatabaseReference myDatabaseReference;
-    boolean estamostrandoPasword=false;
-
-    Button ocultaYmuestrbtn2;
-
-
-    EditText ediNomnre;
-
-    EditText contrasena_Editxt;
+private DatabaseReference myDatabaseReference;
+boolean estamostrandoPasword=false;
+Button ocultaYmuestrbtn2;
+EditText ediNomnre;
+EditText contrasena_Editxt;
 EditText ediApellido;
 EditText numeroTelefonico;
 EditText correo;
@@ -216,7 +211,7 @@ public void obtieneTexto(){
 
 
 
-
+/*
 
     if(stringNumeroTelefonico.isEmpty()){
         numeroTelefonico.setError("Numero telefonico es requerido");
@@ -260,7 +255,7 @@ public void obtieneTexto(){
 
 
 
-
+*/
 
         if (contrasena_string.isEmpty()) {
             contrasena_Editxt.setError("contrasena es requerida");
@@ -300,9 +295,10 @@ public void obtieneTexto(){
 
                     muestraSheetCorreoEnviado();
 
+                    Log.i("registrand","corroe enviado ");
 
                         //agregamos un nuevo user
-                    creaNuevoUser(ediNomnre.getText().toString(),ediApellido.getText().toString(),numeroTelefonico.getText().toString(),email,1,0,contrasena_string,"");
+                    creaNuevoUser(ediNomnre.getText().toString(),ediApellido.getText().toString(),"0xxxxxxxxx",email,1,0,contrasena_string,"");
 
 
 
@@ -312,6 +308,7 @@ public void obtieneTexto(){
 
                     if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                         Toast.makeText(RegistroActivity.this, "Tu correo ya esta registrado", Toast.LENGTH_SHORT).show();
+                        Log.i("registrand","correo ya registrado ");
 
                         startActivity(new Intent(RegistroActivity.this,LoginActivity.class));
 
@@ -348,8 +345,8 @@ public void obtieneTexto(){
 
     private void inicilizaViews(){
 
-        ediNomnre=findViewById(R.id.correouser);
-        ediApellido=findViewById(R.id.contrasenauser);
+        ediNomnre=findViewById(R.id.nombre);
+        ediApellido=findViewById(R.id.apellido);
         numeroTelefonico=findViewById(R.id.numeroTelefonico);
         correo=findViewById(R.id.correoEdixt);
          btnRegistrarse=findViewById(R.id.btinicirsesion);
@@ -584,14 +581,21 @@ private void textwatchadd(){
     }
 
 
-private void creaNuevoUser(String nombre,String apellido,String numeroTelefonico,String correoElectronico,int userIdCategory,int nivelVerificacion,String password,String photourl){
+
+
+
+   private void creaNuevoUser(String nombre,String apellido,String numeroTelefonico,String correoElectronico,int userIdCategory,int nivelVerificacion,String password,String photourl){
     //cremoa un objeto
-    UsuarioCliente userClienteObj= new UsuarioCliente(nombre,apellido,numeroTelefonico,correoElectronico,userIdCategory,nivelVerificacion,password,photourl);
+    UsuarioCliente userClienteObj= new UsuarioCliente(nombre,apellido, "090000xxx",correoElectronico,userIdCategory,nivelVerificacion,password,photourl);
 
 
     myDatabaseReference.child(userIDCurrentUser).setValue(userClienteObj);
 
-}
+    }
+
+
+
+
 
 
 }

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.text.InputType;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.MotionEvent;
@@ -14,26 +13,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.ActionCodeSettings;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.tiburela.ecuavisit.Activitys.LoginActivity;
 import com.tiburela.ecuavisit.Activitys.MainActivityCenter;
 import com.tiburela.ecuavisit.R;
 import com.tiburela.ecuavisit.models.UsuarioCliente;
-import com.tiburela.ecuavisit.variablesGlobales.Variables;
 
 
 public class RegistroCuentaGoogle extends AppCompatActivity implements View.OnTouchListener {
@@ -299,8 +292,8 @@ if(!correoOfEdit.equals(account.getEmail())){
 
     private void inicilizaViews(){
 
-        ediNomnre=findViewById(R.id.correouser);
-        ediApellido=findViewById(R.id.contrasenauser);
+        ediNomnre=findViewById(R.id.nombre);
+        ediApellido=findViewById(R.id.apellido);
         numeroTelefonico=findViewById(R.id.numeroTelefonico);
         correo=findViewById(R.id.correoEdixt);
          btnRegistrarse=findViewById(R.id.btinicirsesion);

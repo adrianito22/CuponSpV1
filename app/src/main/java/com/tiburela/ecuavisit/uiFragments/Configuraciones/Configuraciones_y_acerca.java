@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tiburela.ecuavisit.Activitys.LoginActivity;
 import com.tiburela.ecuavisit.Activitys.MainActivityCenter;
+import com.tiburela.ecuavisit.AdminOnly.RegiterOtherUser;
 import com.tiburela.ecuavisit.LoginAndRegistro.RegistroCuentaGoogle;
 import com.tiburela.ecuavisit.R;
 import com.tiburela.ecuavisit.models.UsuarioCliente;
@@ -37,6 +38,9 @@ import com.tiburela.ecuavisit.variablesGlobales.Variables;
 public class Configuraciones_y_acerca extends Fragment {
 View rootviw;
     Button cerrarsesionBtn;
+    Button button5;
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -85,6 +89,9 @@ String userIDCurrentUser;
         rootviw= inflater.inflate(R.layout.fragment_configuraciones_y_acerca, container, false);
 
 
+        button5=(Button)rootviw.findViewById(R.id.button5);
+
+
         cerrarsesionBtn=(Button)rootviw.findViewById(R.id.cerrarsesionBtn);
 
         cerrarsesionBtn.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +117,16 @@ String userIDCurrentUser;
             }
         });
 
+
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getActivity(), RegiterOtherUser.class));
+
+            }
+        });
+
         return rootviw;
     }
 
@@ -127,7 +144,7 @@ String userIDCurrentUser;
                 //  Toast.makeText(MainActivityCenter.this, "EL NOMBRE ES "+usuarioClienteObjecCurrent.getNombre(), Toast.LENGTH_SHORT).show();
                 if( Variables.globalUsuarioClienteObj.getPassword().equals("isGoogleAuth")){
 
-                    Toast.makeText(getActivity(), "usuario con googel acount", Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(getActivity(), "usuario con googel acount", Toast.LENGTH_SHORT).show();
 
                     if(  Variables. mGoogleSignInClient!=null){
                         Variables. mGoogleSignInClient.signOut();
@@ -146,7 +163,7 @@ String userIDCurrentUser;
 
 
                 }else {
-                    Toast.makeText(getActivity(), "usuario con pasword y contrasena ", Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(getActivity(), "usuario con pasword y contrasena ", Toast.LENGTH_SHORT).show();
 
 
                     ((MainActivityCenter)getActivity()).SaelUseryPasword();

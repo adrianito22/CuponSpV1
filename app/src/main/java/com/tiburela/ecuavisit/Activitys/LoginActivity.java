@@ -14,15 +14,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
@@ -33,7 +38,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tiburela.ecuavisit.LoginAndRegistro.RecuperaPasword;
 import com.tiburela.ecuavisit.LoginAndRegistro.RegistroActivity;
-import com.tiburela.ecuavisit.LoginAndRegistro.RegistroCuentaGoogle;
 import com.tiburela.ecuavisit.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -42,22 +46,25 @@ import com.google.firebase.auth.SignInMethodQueryResult;
 import com.tiburela.ecuavisit.models.UsuarioCliente;
 import com.tiburela.ecuavisit.variablesGlobales.Variables;
 
+import java.util.Arrays;
+
 public class LoginActivity extends AppCompatActivity {
 
     Button ocultaMuestraTexto ;
-
+    FirebaseUser userFcaebook ;
     boolean estamostrandoPasword=false;
 
-    SignInButton signInButton;
+    SignInButton signInButtonGoogle;
     private static final int RC_SIGN_IN = 9001;
     private static final String TAG = "GoogleActivity";
     String userIDCurrentUser;
     boolean ExisteNode=false;
-FirebaseDatabase firebaseDatabase;
+    FirebaseDatabase firebaseDatabase;
     private boolean sellamoComprobacion=false;
     TextView textviewOlvidastePass;
-   // private GoogleSignInClient mGoogleSignInClient;
+    // private GoogleSignInClient mGoogleSignInClient;
     private DatabaseReference myDatabaseReference;
+    private CallbackManager mCallbackManager;
 
     TextView registratebtn;
     private FirebaseAuth mAuth;
@@ -77,21 +84,10 @@ FirebaseDatabase firebaseDatabase;
         setContentView(R.layout.activity_login2);
 
         mAuth = FirebaseAuth.getInstance(); //verificamos que si esta autentificado..
-
-
-       // FirebaseDatabase.getInstance().setPersistenceEnabled(true); //anterior
+        // FirebaseDatabase.getInstance().setPersistenceEnabled(true); //anterior
 
         myDatabaseReference = FirebaseDatabase.getInstance().getReference("Clientes"); //anterior
-
-
-
-
-
-
-
-
-
-
+        facebookLoginActivity();
 
         //iniloizamos vistas
         findVIewID();
@@ -104,7 +100,7 @@ FirebaseDatabase firebaseDatabase;
                 .requestEmail()
                 .build();
 
-      Variables. mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        Variables.mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
         eventoBnt();
@@ -214,10 +210,10 @@ FirebaseDatabase firebaseDatabase;
     private void eventoBnt() {
 
 
-        signInButton.setOnClickListener(new View.OnClickListener() {
+        signInButtonGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                signIn();
+                signInGoogle();
             }
         });
 
@@ -268,7 +264,7 @@ FirebaseDatabase firebaseDatabase;
         textviewOlvidastePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              startActivity(new Intent(LoginActivity.this, RecuperaPasword.class));
+                startActivity(new Intent(LoginActivity.this, RecuperaPasword.class));
 
 
             }
@@ -312,12 +308,12 @@ FirebaseDatabase firebaseDatabase;
 
 
     private void findVIewID() {
-        correouser = findViewById(R.id.correouser);
-        contrasenauser = findViewById(R.id.contrasenauser);
+        correouser = findViewById(R.id.nombre);
+        contrasenauser = findViewById(R.id.apellido);
         btinicirsesion = findViewById(R.id.btinicirsesion);
         registratebtn = findViewById(R.id.registratebtn);
 
-        signInButton = findViewById(R.id.sign_in_button);
+        signInButtonGoogle = findViewById(R.id.sign_in_buttonGoogle);
         textviewOlvidastePass=findViewById(R.id.textviewOlvidastePass);
 
 
@@ -331,12 +327,12 @@ FirebaseDatabase firebaseDatabase;
         super.onStart();
 
 
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this); //oibtrienwe ultimo siogning
 
 
-          if (account != null&& Variables.mGoogleSignInClient!=null) { //el usario ya inicio sesion... ir a otra actividad..
+        if (account != null&& Variables.mGoogleSignInClient!=null) { //el usario ya inicio sesion... ir a otra actividad..
             //  Variables.correoUserActual= account.getEmail();
-              Toast.makeText(this, "se ejecuto este ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "se ejecuto este ", Toast.LENGTH_SHORT).show();
 
 
             Log.i("dataLoginxx", "se ejecuto este if ");
@@ -350,13 +346,13 @@ FirebaseDatabase firebaseDatabase;
 
 
 
-      else   if (mAuth.getCurrentUser() != null) {
+        else   if (mAuth.getCurrentUser() != null) {
 
-              Toast.makeText(this, "se ejecuto el else if  ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "se ejecuto el else if  ", Toast.LENGTH_SHORT).show();
 
-              Log.i("dataLoginxx", "se ejecuto el else if  ");
+            Log.i("dataLoginxx", "se ejecuto el else if  ");
 
-          /**por aqui verificar si hay confirmado el correo*/
+            /**por aqui verificar si hay confirmado el correo*/
 
             if (Variables.mailTemporal.length() > 1) {
 
@@ -408,7 +404,7 @@ FirebaseDatabase firebaseDatabase;
             @Override
             public void onClick(View v) {
 
-              //  startActivity(new Intent(RegistroActivity.this, LoginActivity.class));
+                //  startActivity(new Intent(RegistroActivity.this, LoginActivity.class));
 
                 bottomSheetDialognota.dismiss();
 
@@ -424,13 +420,17 @@ FirebaseDatabase firebaseDatabase;
 
 
 
-    private void signIn() {
+    private void signInGoogle() {
+
+
 
         Intent signInIntent = Variables. mGoogleSignInClient.getSignInIntent();
 
 
         startActivityForResult(signInIntent, RC_SIGN_IN);
         Log.i("logingoogle","se puslo singin metodo2");
+
+
 
     }
 
@@ -440,6 +440,7 @@ FirebaseDatabase firebaseDatabase;
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
@@ -448,22 +449,21 @@ FirebaseDatabase firebaseDatabase;
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
 
-                Log.i("logingoogle","goglle sing suceees"+ account.getId());
+                Log.i("defugero", "firebaseAuthWithGoogle:" + account.getId());
+                Log.i("defugero", "firebaseAuthWithGoogle:" + account.getDisplayName());
 
 
 
-                //  Variables.correoUserActual=account.getEmail();
 
-                Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
                 firebaseAuthWithGoogle(account.getIdToken());
-                Log.i("dataLogin","se jecuito el try");
+                Log.i("defugero","se jecuito el try");
 
             } catch (ApiException e) {
 
-                Log.i("dataLogin","se produjo un error ");
-                Log.i("logingoogle","se produjo un error es "+e);
+                Log.i("defugero","se produjo un error ");
+                Log.i("defugero","se produjo un error es "+e);
                 // Google Sign In failed, update UI appropriately
-                Log.w(TAG, "Google sign in failed", e);
+                Log.w("defugero", "Google sign in failed", e);
             }
         }
     }
@@ -483,19 +483,24 @@ FirebaseDatabase firebaseDatabase;
 
                             Log.i("dataLogin","se ejecuto firebaseAuthWithGoogle()  succes");
 
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            FirebaseUser userGoogle = mAuth.getCurrentUser();
                             //Variables.correoUserActual=user.getEmail();
 
                             Log.i("logingoogle","se ejecuto este metodo");
 
-                               /**verificar si por aqui creamos el nuevo nodo
-                                * */
 
-                            //creaNuevoUser(ediNomnre.getText().toString(),ediApellido.getText().toString(),numeroTelefonico.getText().toString(),email,1,0,contrasena_string,"");
+                            //vamnos a la aactividad centrer
 
-                            verificasSiExisteKey();
+                            startActivity(new Intent(LoginActivity.this,MainActivityCenter.class));
 
-                           //verificamos si existe un
+
+                            /**verificar si por aqui creamos el nuevo nodo
+                             * */
+
+                           // creaNuevoUser(ediNomnre.getText().toString(),ediApellido.getText().toString(),numeroTelefonico.getText().toString(),email,1,0,contrasena_string,"");
+                            chekIfUserExistDataBaseandCreateUser(userGoogle.getEmail(),userGoogle.getDisplayName(),"");
+
+                                //verificamos si existe un
 
 
 
@@ -533,62 +538,94 @@ FirebaseDatabase firebaseDatabase;
     }
 
 
-private boolean verificasSiExisteKey(){
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    if(user!=null){
-        userIDCurrentUser=user.getUid();
+    private boolean chekIfUserExistDataBaseandCreateUser(String mail, String name,String secondName){ //verificamos si agregamos el usuario actyual a la base de datos
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user!=null){
+            userIDCurrentUser=user.getUid();
 
-    }
+        }
 
-    myDatabaseReference.orderByKey().equalTo(userIDCurrentUser).addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
+        myDatabaseReference.orderByKey().equalTo(userIDCurrentUser).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-            if(dataSnapshot.exists()) {
+                if(dataSnapshot.exists()) {
 
-                if(!sellamoComprobacion){
-                    sellamoComprobacion=true;
-
-
-                    Toast.makeText(LoginActivity.this, "se ejecuto el xcd ", Toast.LENGTH_SHORT).show();
-
-                    Intent intent = new Intent(LoginActivity.this, MainActivityCenter.class);
-                    startActivity(intent);
-                }
-
-
-
-            } else {
-
-                if(!sellamoComprobacion){
+                    if(!sellamoComprobacion){
                         sellamoComprobacion=true;
-                    Toast.makeText(LoginActivity.this, "se llamo es ttt ", Toast.LENGTH_SHORT).show();
+
+
+                        //existe
+
+                        Intent intent = new Intent(LoginActivity.this, MainActivityCenter.class);
+                        startActivity(intent);
+                    }
+
+
+
+                } else {
+
+                    if(!sellamoComprobacion){
+                        sellamoComprobacion=true;
+
+
+                        //no existe
+
+                        //si nos registramos con cuenta de google
+                        if( Variables.mGoogleSignInClient!=null) { //se regsitor con google
+                            creaNuevoUser(name,secondName,"",mail,0,0,"",""); //agregamos este usuario vacio..
+
+
+                            Intent intent = new Intent(LoginActivity.this, MainActivityCenter.class);
+                            startActivity(intent);
+                        }
+
+                        if( userFcaebook!=null) { //se regsitor con facebook
+                            creaNuevoUser("Name","User","","gilberto@gmail.com",0,0,"",""); //agregamos este usuario vacio..
+
+
+                            Intent intent = new Intent(LoginActivity.this, MainActivityCenter.class);
+                            startActivity(intent);
+                        }
+                        else { //se registro con mail
+
+                            creaNuevoUser("","","","",0,0,"",""); //agregamos este usuario vacio..
+
+
+                            Intent intent = new Intent(LoginActivity.this, MainActivityCenter.class);
+                            startActivity(intent);
+
+
+                          //  Intent intent = new Intent(LoginActivity.this, RegistroCuentaGoogle.class);
+                           // startActivity(intent);
+                        }
+
+
+
 
                         //creamos un uservacio..
-                        creaNuevoUser("","","","",0,0,"",""); //agregamos este usuario vacio..
 
-                        Intent intent = new Intent(LoginActivity.this, RegistroCuentaGoogle.class);
-                        startActivity(intent);
 
+
+                    }
+
+
+
+                    //Key does not exist
                 }
 
-
-
-                //Key does not exist
             }
 
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-        @Override
-        public void onCancelled(@NonNull DatabaseError error) {
+            }
 
-        }
-
-    });
+        });
 
 
-    return ExisteNode;
-}
+        return ExisteNode;
+    }
 
 
 
@@ -607,21 +644,80 @@ private boolean verificasSiExisteKey(){
 
     public  void signOutGoogleAccount() {
 
-       // GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-               // .requestEmail()
-            //    .build();
-       // GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(LoginActivity.this, gso);
+        // GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        // .requestEmail()
+        //    .build();
+        // GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(LoginActivity.this, gso);
 
-       Variables. mGoogleSignInClient.signOut();
+        Variables. mGoogleSignInClient.signOut();
         FirebaseAuth.getInstance().signOut();
 
-      //  startActivity(new Intent(LoginActivity.this, LoginActivity.class));
+        //  startActivity(new Intent(LoginActivity.this, LoginActivity.class));
 
     }
 
 
 
 
+private void facebookLoginActivity() {
+   String EMAIL = "email";
+
+// Initialize Facebook Login button
+    mCallbackManager = CallbackManager.Factory.create();
+    LoginButton loginButton = findViewById(R.id.login_buttonFacebook);
+    loginButton.setReadPermissions(Arrays.asList(EMAIL));
+    loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+        @Override
+        public void onSuccess(LoginResult loginResult) {
+          //  Log.d(TAG, "facebook:onSuccess:" + loginResult);
+            Log.i("helloss", "facebook:onSuccess:" + loginResult);
+
+            handleFacebookAccessToken(loginResult.getAccessToken());
+        }
+
+        @Override
+        public void onCancel() {
+            Log.d(TAG, "facebook:onCancel");
+        }
+
+        @Override
+        public void onError(FacebookException error) {
+            Log.d(TAG, "facebook:onError", error);
+        }
+    });
+
+
+
+}
+
+    private void handleFacebookAccessToken(AccessToken token) {
+        Log.d(TAG, "handleFacebookAccessToken:" + token);
+
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.i("helloss", "signInWithCredential:success");
+                             userFcaebook = mAuth.getCurrentUser();
+
+
+                            chekIfUserExistDataBaseandCreateUser("","","") ;
+
+                           // updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.i("helloss", "signInWithCredential:failure", task.getException());
+                            // Toast.makeText(FacebookLoginActivity.this, "Authentication failed.",
+                                   // Toast.LENGTH_SHORT).show();
+                           // updateUI(null);
+                        }
+                    }
+                });
+    }
+    // [END auth_with_facebook]
 
 
 }

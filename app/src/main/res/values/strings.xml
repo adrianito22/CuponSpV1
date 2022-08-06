@@ -6,6 +6,11 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
 
+    <string name="facebook_app_id">465194488465783</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">1cd38f4fe6e11dee33b3f502e75973db</string>
+
+
     <string name="pref_key_transition_time" translatable="false">pref_key_transition_time</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="nav_title_import">Import</string>

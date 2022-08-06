@@ -13,7 +13,7 @@
         <item
             android:id="@+id/lista_paises"
             android:icon="@drawable/ic_outline_calendar_today_24fsg"
-            android:title="Reservaciones" />
+            android:title="Mis Cupones" />
 
 
         <item

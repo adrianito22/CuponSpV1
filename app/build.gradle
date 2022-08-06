@@ -53,7 +53,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-appcheck-safetynet:16.0.0-beta04'
     apply plugin: 'com.google.gms.google-services'
 
-
+    implementation 'com.facebook.android:facebook-login:latest.release'
 
 
     }

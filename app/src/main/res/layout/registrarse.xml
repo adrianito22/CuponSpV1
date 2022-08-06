@@ -40,7 +40,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline18">
 
             <EditText
-                android:id="@+id/correouser"
+                android:id="@+id/nombre"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
@@ -80,7 +80,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline21">
 
             <EditText
-                android:id="@+id/contrasenauser"
+                android:id="@+id/apellido"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
@@ -99,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.72" />
+            app:layout_constraintGuide_percent="0.62" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline43"
@@ -162,7 +162,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.78" />
+            app:layout_constraintGuide_percent="0.68" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline15"
@@ -309,6 +309,7 @@
             android:background="@drawable/roundz"
             android:orientation="horizontal"
             android:tag="numerotelefonico"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/guideline3"
             app:layout_constraintEnd_toStartOf="@+id/guideline17"
             app:layout_constraintStart_toStartOf="@+id/guideline19"

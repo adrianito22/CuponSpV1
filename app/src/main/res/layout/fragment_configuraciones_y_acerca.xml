@@ -19,7 +19,16 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/btn_desing"
             android:text="        Cerrar Sesion       "
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:text="agregar un nuevo usuario" />
     </LinearLayout>
 
 </FrameLayout>
